@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">FirstPractice</string>
+    <string name="shop_name">PerfumeStore</string>
+    <string name="user_name">Enter your name</string>
+    <string name="button_text">Let\'s go shopping!</string>
+    <string name="button_exit">Exit</string>
+    <string name="image_desc">This is image</string>
 </resources>
