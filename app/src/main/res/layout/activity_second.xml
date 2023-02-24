@@ -22,5 +22,13 @@
         android:layout_height="192dp"
         android:src="@drawable/_551570" />
 
+    <TextView
+        android:id="@+id/total_perfume_text"
+        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/total_perfume"
+        android:textSize="50sp"
+        android:textAlignment="center" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
