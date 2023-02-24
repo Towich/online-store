@@ -10,10 +10,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.firstpractice.databinding.ActivityMainBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MyApplication";
-
 
     Context context;
     int duration;
@@ -21,25 +22,25 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         context = getApplicationContext();
         duration = Toast.LENGTH_SHORT;
 
         Log.d(TAG, "%Debug% in onCreate");
 
-        Button button_lets_shop = findViewById(R.id.button_lets_shop);
-        button_lets_shop.setText("Let's shopping!");
+        Button button_lets_shop = binding.buttonLetsShop;
         button_lets_shop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "CLICKED!", duration).show();
-
-                Log.i(TAG, "CLICKED!");
+                Log.i(TAG, "Clicked!");
             }
         });
 
-        ImageView shop_logo = findViewById(R.id.user_image_view);
+        button_lets_shop.setText("Let's shopping!");
+
+        ImageView shop_logo = binding.userImageView;
         shop_logo.setImageResource(R.drawable.logo_image);
     }
     @Override

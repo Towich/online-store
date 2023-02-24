@@ -11,7 +11,8 @@
         android:contentDescription="@string/image_desc"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
-        android:layout_height="192dp" />
+        android:layout_height="192dp"
+        android:src="@drawable/logo_image"/>
 
     <TextView
         android:id="@+id/user_name_text_view"
