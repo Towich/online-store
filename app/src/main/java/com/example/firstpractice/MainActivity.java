@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,6 +27,20 @@ public class MainActivity extends AppCompatActivity {
         duration = Toast.LENGTH_SHORT;
 
         Log.d(TAG, "%Debug% in onCreate");
+
+        Button button_lets_shop = findViewById(R.id.button_lets_shop);
+        button_lets_shop.setText("Let's shopping!");
+        button_lets_shop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "CLICKED!", duration).show();
+
+                Log.i(TAG, "CLICKED!");
+            }
+        });
+
+        ImageView shop_logo = findViewById(R.id.user_image_view);
+        shop_logo.setImageResource(R.drawable.logo_image);
     }
     @Override
     protected void onStart() {
