@@ -12,11 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 public class SecondFragment extends Fragment {
 
     private ImageButton btn_back;
+    private int perfumeCounter;
+    private FragmentManager fragmentManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,17 @@ public class SecondFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        fragmentManager = getParentFragmentManager();
+
+        fragmentManager.setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                int receivedPerfumeCounter = result.getInt("perfumeCounter");
+                perfumeCounter = receivedPerfumeCounter;
+            }
+        });
+
         return inflater.inflate(R.layout.fragment_shopping_cart, container, false);
     }
 
@@ -47,5 +61,14 @@ public class SecondFragment extends Fragment {
                 Log.i("Fragment", "onClick");
             }
         });
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        Bundle result = new Bundle();
+        result.putInt("perfumeCounter", perfumeCounter);
+        fragmentManager.setFragmentResult("requestKey", result);
     }
 }

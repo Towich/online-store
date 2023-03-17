@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Debug;
@@ -21,7 +22,7 @@ import android.widget.Toast;
 public class ContentFragment extends Fragment {
 
     private int perfumeCounter;
-
+    FragmentManager fragmentManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,17 @@ public class ContentFragment extends Fragment {
         Toast.makeText(getContext(), "onCreateView", Toast.LENGTH_LONG).show();
         Log.i("Fragment", "onCreateView");
         // Inflate the layout for this fragment
+
+        fragmentManager = getParentFragmentManager();
+
+        fragmentManager.setFragmentResultListener("requestKey", this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
+                int receivedPerfumeCounter = result.getInt("perfumeCounter");
+                perfumeCounter = receivedPerfumeCounter;
+            }
+        });
+
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
@@ -108,6 +120,10 @@ public class ContentFragment extends Fragment {
 
         Toast.makeText(getContext(), "onStop", Toast.LENGTH_LONG).show();
         Log.i("Fragment", "onStop");
+
+        Bundle result = new Bundle();
+        result.putInt("perfumeCounter", perfumeCounter);
+        fragmentManager.setFragmentResult("requestKey", result);
     }
 
     @Override
