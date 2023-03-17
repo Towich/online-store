@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.firstpractice.databinding.FragmentMainBinding;
+
 
 public class ContentFragment extends Fragment {
 
@@ -59,8 +61,8 @@ public class ContentFragment extends Fragment {
         Toast.makeText(getContext(), "onViewCreated", Toast.LENGTH_LONG).show();
         Log.i("Fragment", "onViewCreated");
 
+
         ImageButton btn_cart = view.findViewById(R.id.button_lets_shop);
-        //Button btnAddToCart = view.findViewById(R.id.button_add_perfume);
 
         btn_cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,13 +75,26 @@ public class ContentFragment extends Fragment {
             }
         });
 
-//        btnAddToCart.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                perfumeCounter++;
-//                Log.i("Fragment", "Total perfume: " + perfumeCounter);
-//            }
-//        });
+        Button btn_store = view.findViewById(R.id.button_store);
+        Button btn_store_discounts = view.findViewById(R.id.button_store_discounts);
+
+        btn_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container_view, new StoreFragment());
+                fragmentTransaction.commit();
+            }
+        });
+
+        btn_store_discounts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragment_container_view, new StoreDiscountsFragment());
+                fragmentTransaction.commit();
+            }
+        });
     }
 
     @Override
