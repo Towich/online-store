@@ -21,6 +21,7 @@ public class MyCustomRecyclerViewAdapter extends RecyclerView.Adapter<MyCustomRe
 
     public MyCustomRecyclerViewAdapter(Context context, List<String> items){
         store_items = items;
+        this.context = context;
         inflater = LayoutInflater.from(context);
     }
 
