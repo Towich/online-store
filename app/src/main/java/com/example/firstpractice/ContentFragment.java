@@ -60,7 +60,7 @@ public class ContentFragment extends Fragment {
         Log.i("Fragment", "onViewCreated");
 
         ImageButton btn_cart = view.findViewById(R.id.button_lets_shop);
-        Button btnAddToCart = view.findViewById(R.id.button_add_perfume);
+        //Button btnAddToCart = view.findViewById(R.id.button_add_perfume);
 
         btn_cart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,13 +73,13 @@ public class ContentFragment extends Fragment {
             }
         });
 
-        btnAddToCart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                perfumeCounter++;
-                Log.i("Fragment", "Total perfume: " + perfumeCounter);
-            }
-        });
+//        btnAddToCart.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                perfumeCounter++;
+//                Log.i("Fragment", "Total perfume: " + perfumeCounter);
+//            }
+//        });
     }
 
     @Override
