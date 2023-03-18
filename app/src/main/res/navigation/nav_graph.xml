@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@layout/fragment_main">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.example.firstpractice.ContentFragment"
+        android:label="Main"
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_storeDiscountsFragment2"
+            app:destination="@id/storeDiscountsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_storeFragment2"
+            app:destination="@id/storeFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/storeFragment"
+        android:name="com.example.firstpractice.StoreFragment"
+        android:label="Store"
+        tools:layout="@layout/fragment_store" />
+
+    <fragment
+        android:id="@+id/storeDiscountsFragment"
+        android:name="com.example.firstpractice.ContentFragment"
+        android:label="Discounts"
+        tools:layout="@layout/fragment_store_discounts" />
+</navigation>
