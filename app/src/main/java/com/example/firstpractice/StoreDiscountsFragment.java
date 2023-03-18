@@ -36,9 +36,15 @@ public class StoreDiscountsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        int arguments = getArguments().getInt("perfume_to_watch");
+
+        if(arguments == 0) {
+            arguments = 10;
+        }
+
         List<String> store_items = new ArrayList<String>();
 
-        for(int i = 1; i <= 300; i++){
+        for(int i = 1; i <= arguments; i++){
             store_items.add("Premium perfume " + i);
         }
 

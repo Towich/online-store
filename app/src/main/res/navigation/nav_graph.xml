@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@layout/fragment_main">
+    app:startDestination="@id/mainFragment">
 
     <fragment
         android:id="@+id/mainFragment"
@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/storeDiscountsFragment"
-        android:name="com.example.firstpractice.ContentFragment"
+        android:name="com.example.firstpractice.StoreDiscountsFragment"
         android:label="Discounts"
         tools:layout="@layout/fragment_store_discounts" />
 </navigation>

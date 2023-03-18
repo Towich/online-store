@@ -8,8 +8,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
 import android.os.Debug;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,12 +22,15 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.example.firstpractice.databinding.FragmentMainBinding;
+import com.google.android.material.textfield.TextInputEditText;
 
 
 public class ContentFragment extends Fragment {
 
     private int perfumeCounter;
+    private int perfumeToWatch;
     FragmentManager fragmentManager;
+    TextInputEditText perfumeToWatchText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,7 +63,7 @@ public class ContentFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Log.i("Fragment", "onViewCreated");
 
-
+        perfumeToWatch = 10;
         ImageButton btn_cart = view.findViewById(R.id.button_lets_shop);
 
         btn_cart.setOnClickListener(new View.OnClickListener() {
@@ -74,21 +80,28 @@ public class ContentFragment extends Fragment {
         Button btn_store = view.findViewById(R.id.button_store);
         Button btn_store_discounts = view.findViewById(R.id.button_store_discounts);
 
+        perfumeToWatchText = view.findViewById(R.id.input_text_perfumes);
+
         btn_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container_view, new StoreFragment());
-                fragmentTransaction.commit();
+                perfumeToWatch = Integer.parseInt(perfumeToWatchText.getText().toString());
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("perfume_to_watch", perfumeToWatch);
+                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_storeFragment2, bundle);
             }
         });
 
         btn_store_discounts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragment_container_view, new StoreDiscountsFragment());
-                fragmentTransaction.commit();
+                perfumeToWatch = Integer.parseInt(perfumeToWatchText.getText().toString());
+
+                Bundle bundle = new Bundle();
+                bundle.putInt("perfume_to_watch", perfumeToWatch);
+
+                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_storeDiscountsFragment2, bundle);
             }
         });
     }
