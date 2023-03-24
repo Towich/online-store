@@ -47,6 +47,8 @@ public class ContentFragment extends Fragment {
 
         fragmentManager = getParentFragmentManager();
 
+        // ResultListener for receiving perfume counter from Fragment "Cart"
+        // %outdated%
         fragmentManager.setFragmentResultListener("requestKey", this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String requestKey, @NonNull Bundle result) {
@@ -64,8 +66,12 @@ public class ContentFragment extends Fragment {
         Log.i("Fragment", "onViewCreated");
 
         perfumeToWatch = 10;
-        ImageButton btn_cart = view.findViewById(R.id.button_lets_shop);
+        perfumeToWatchText = view.findViewById(R.id.input_text_perfumes);
 
+        // *Buttons*
+
+        // button "Cart"
+        ImageButton btn_cart = view.findViewById(R.id.button_lets_shop);
         btn_cart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,11 +83,8 @@ public class ContentFragment extends Fragment {
             }
         });
 
+        // button "Store"
         Button btn_store = view.findViewById(R.id.button_store);
-        Button btn_store_discounts = view.findViewById(R.id.button_store_discounts);
-
-        perfumeToWatchText = view.findViewById(R.id.input_text_perfumes);
-
         btn_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +96,8 @@ public class ContentFragment extends Fragment {
             }
         });
 
+        // button "Discounts"
+        Button btn_store_discounts = view.findViewById(R.id.button_store_discounts);
         btn_store_discounts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,6 +107,18 @@ public class ContentFragment extends Fragment {
                 bundle.putInt("perfume_to_watch", perfumeToWatch);
 
                 Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_storeDiscountsFragment2, bundle);
+            }
+        });
+
+        // button "Info"
+        ImageButton btn_info = view.findViewById(R.id.button_info);
+        btn_info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                /*
+                    Here we have to make a notification
+                 */
+
             }
         });
     }
