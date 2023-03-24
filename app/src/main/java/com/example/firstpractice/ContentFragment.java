@@ -1,9 +1,19 @@
 package com.example.firstpractice;
 
+import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
@@ -27,10 +37,14 @@ import com.google.android.material.textfield.TextInputEditText;
 
 public class ContentFragment extends Fragment {
 
+    private static final String CHANNEL = "CHANNEL";
+    private static final int NOTIFICATION_ID = 1;
+
     private int perfumeCounter;
     private int perfumeToWatch;
     FragmentManager fragmentManager;
     TextInputEditText perfumeToWatchText;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +81,25 @@ public class ContentFragment extends Fragment {
 
         perfumeToWatch = 10;
         perfumeToWatchText = view.findViewById(R.id.input_text_perfumes);
+
+        // *Channel (notifications)*
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "my channel";
+            String description = "it's the channel for notifications";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL, name, importance);
+            channel.setDescription(description);
+            NotificationManager notificationManager = requireContext().
+                    getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        Intent notificationIntent = new Intent(getActivity(), MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(getActivity(),
+                0, notificationIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+
 
         // *Buttons*
 
@@ -115,15 +148,38 @@ public class ContentFragment extends Fragment {
         btn_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 /*
-                    Here we have to make a notification
+                    Here we calling a notification
                  */
 
+
+                // check if we haven't a permission to call a notification
+                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                    // doing something, idk
+                }
+
+                // creating a notification
+                NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(),
+                        CHANNEL)
+                        .setSmallIcon(R.drawable.info_icon__6)
+                        .setContentText("Ваш заказ был отправлен!")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+                // calling a notification
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(requireContext());
+                notificationManager.notify(NOTIFICATION_ID, builder.build());
             }
         });
+
     }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(
+                requestCode, permissions, grantResults
+        );
+    }
 
     @Override
     public void onStop() {

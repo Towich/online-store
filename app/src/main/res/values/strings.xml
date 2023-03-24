@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FirstPractice</string>
+    <string name="app_name">Perfume Store</string>
     <string name="shop_name">PerfumeStore</string>
     <string name="user_name">Enter your name</string>
     <string name="button_text">Cart</string>
