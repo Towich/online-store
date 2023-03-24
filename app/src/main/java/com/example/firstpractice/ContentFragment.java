@@ -155,13 +155,6 @@ public class ContentFragment extends Fragment {
                     Here we calling a notification
                  */
 
-
-                // check if we haven't a permission to call a notification
-                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_NOTIFICATION_POLICY) != PackageManager.PERMISSION_GRANTED) {
-                    requestPermissions();
-                }
-
-
                 // creating a notification
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(),
                         CHANNEL)
@@ -178,22 +171,6 @@ public class ContentFragment extends Fragment {
 
     }
 
-    public void requestPermissions() {
-        ActivityCompat.requestPermissions(getActivity(),
-                new String[] {
-                        Manifest.permission.ACCESS_NOTIFICATION_POLICY
-                },
-                NOTIFICATION_ID);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(
-                requestCode, permissions, grantResults
-        );
-    }
 
     @Override
     public void onStop() {
