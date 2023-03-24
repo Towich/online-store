@@ -11,6 +11,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
@@ -78,6 +79,7 @@ public class ContentFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.i("Fragment", "onViewCreated");
+        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // LET THERE BE A LIGHT!
 
         perfumeToWatch = 10;
         perfumeToWatchText = view.findViewById(R.id.input_text_perfumes);
@@ -155,14 +157,16 @@ public class ContentFragment extends Fragment {
 
 
                 // check if we haven't a permission to call a notification
-                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-                    // doing something, idk
+                if(ContextCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_NOTIFICATION_POLICY) != PackageManager.PERMISSION_GRANTED) {
+                    requestPermissions();
                 }
+
 
                 // creating a notification
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(requireContext(),
                         CHANNEL)
-                        .setSmallIcon(R.drawable.info_icon__6)
+                        .setSmallIcon(R.drawable.logo_image)
+                        .setContentTitle("Заказ")
                         .setContentText("Ваш заказ был отправлен!")
                         .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
@@ -174,8 +178,18 @@ public class ContentFragment extends Fragment {
 
     }
 
+    public void requestPermissions() {
+        ActivityCompat.requestPermissions(getActivity(),
+                new String[] {
+                        Manifest.permission.ACCESS_NOTIFICATION_POLICY
+                },
+                NOTIFICATION_ID);
+    }
+
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(
                 requestCode, permissions, grantResults
         );
