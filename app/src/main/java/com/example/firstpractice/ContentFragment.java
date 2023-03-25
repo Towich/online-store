@@ -169,6 +169,16 @@ public class ContentFragment extends Fragment {
             }
         });
 
+        // button "Start service"
+        ImageButton btn_start_service = view.findViewById(R.id.button_start_service);
+        btn_start_service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity().getApplicationContext(), MyService.class);
+                getActivity().startService(intent);
+            }
+        });
+
     }
 
 

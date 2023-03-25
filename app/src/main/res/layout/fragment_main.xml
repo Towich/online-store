@@ -83,5 +83,16 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"/>
 
+    <ImageButton
+        android:id="@+id/button_start_service"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/info_icon__6"
+        android:textSize="@dimen/button_lets_shop_text_size"
+        app:layout_constraintStart_toEndOf="@+id/button_info"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="5dp"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
