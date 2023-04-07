@@ -1,4 +1,4 @@
-package com.example.firstpractice;
+package com.example.firstpractice.ui;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.example.firstpractice.R;
 
 public class SecondFragment extends Fragment {
 

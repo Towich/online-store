@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.firstpractice.ContentFragment"
+        android:name="com.example.firstpractice.ui.ContentFragment"
         android:label="Main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -20,13 +20,13 @@
 
     <fragment
         android:id="@+id/storeFragment"
-        android:name="com.example.firstpractice.StoreFragment"
+        android:name="com.example.firstpractice.ui.StoreFragment"
         android:label="Store"
         tools:layout="@layout/fragment_store" />
 
     <fragment
         android:id="@+id/storeDiscountsFragment"
-        android:name="com.example.firstpractice.StoreDiscountsFragment"
+        android:name="com.example.firstpractice.ui.StoreDiscountsFragment"
         android:label="Discounts"
         tools:layout="@layout/fragment_store_discounts" />
 </navigation>

@@ -1,10 +1,11 @@
-package com.example.firstpractice;
+package com.example.firstpractice.ui;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,16 +14,25 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.firstpractice.MainContract;
+import com.example.firstpractice.MyCustomRecyclerViewAdapter;
+import com.example.firstpractice.R;
+import com.example.firstpractice.domain.FirstDelegate;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class StoreDiscountsFragment extends Fragment {
+public class StoreDiscountsFragment extends Fragment implements MainContract.View {
+
+    private MainContract.Delegate mDelegate;
+    private RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mDelegate = new FirstDelegate(this, true);
     }
 
     @Override
@@ -37,22 +47,28 @@ public class StoreDiscountsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         int arguments = getArguments().getInt("perfume_to_watch");
+        recyclerView = view.findViewById(R.id.recycler_view);
 
         if(arguments == 0) {
             arguments = 10;
         }
 
-        List<String> store_items = new ArrayList<String>();
 
-        for(int i = 1; i <= arguments; i++){
-            store_items.add("Premium perfume " + i);
-        }
+        List<String> store_items = showItems(arguments);
 
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 1);
         MyCustomRecyclerViewAdapter recyclerViewAdapter = new MyCustomRecyclerViewAdapter(getActivity(), store_items);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(recyclerViewAdapter);
+
+    }
+
+    public List<String> showItems(int quantity){
+        return mDelegate.onViewCreatedForDelegate(quantity);
+    }
+
+    public FragmentActivity getFragmentActivity(){
+        return getActivity();
     }
 }
