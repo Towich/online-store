@@ -18,8 +18,4 @@ public class ShopRepository {
     public Shop getSecondShop() {
         return secondShop;
     }
-
-    public void createShops(){
-
-    }
 }
