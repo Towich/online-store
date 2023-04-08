@@ -57,7 +57,21 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.97"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_our_shops"
+        android:layout_width="186dp"
+        android:layout_height="100dp"
+        android:text="Check our shops"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_store"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.034"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/user_name_text_view"
@@ -69,6 +83,7 @@
         app:layout_constraintTop_toBottomOf="@+id/user_image_view" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,9 +93,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_text_perfumes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:hint="Perfumes to show.."
-            android:text="300"/>
+            android:text="300" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton

@@ -181,6 +181,14 @@ public class ContentFragment extends Fragment {
                 Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_IAmLuckyFragment);
             }
         });
+
+        Button btn_our_shops = view.findViewById(R.id.button_our_shops);
+        btn_our_shops.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_shopsFragment);
+            }
+        });
     }
 
 

@@ -42,7 +42,6 @@ public class IAmLuckyFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-
         // Searching elements
         bttnLuckyPerfume = view.findViewById(R.id.buttonGetLuckyPerfume);
         imagePerfume = view.findViewById(R.id.imageViewLuckyPerfume);
@@ -55,6 +54,7 @@ public class IAmLuckyFragment extends Fragment {
             textPerfume.setText(luckyPerfume.getNamePerfume());
         });
 
+        // Adding listener to button
         bttnLuckyPerfume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
