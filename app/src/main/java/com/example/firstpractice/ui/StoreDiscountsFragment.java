@@ -67,8 +67,4 @@ public class StoreDiscountsFragment extends Fragment implements MainContract.Vie
     public List<String> showItems(int quantity){
         return mDelegate.onViewCreatedForDelegate(quantity);
     }
-
-    public FragmentActivity getFragmentActivity(){
-        return getActivity();
-    }
 }

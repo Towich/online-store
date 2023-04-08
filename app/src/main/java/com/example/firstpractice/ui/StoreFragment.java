@@ -74,9 +74,4 @@ public class StoreFragment extends Fragment implements MainContract.View {
     public List<String> showItems(int quantity) {
         return mDelegate.onViewCreatedForDelegate(quantity);
     }
-
-    @Override
-    public FragmentActivity getFragmentActivity() {
-        return getActivity();
-    }
 }
