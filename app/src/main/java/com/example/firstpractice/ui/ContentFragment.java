@@ -173,6 +173,14 @@ public class ContentFragment extends Fragment {
             }
         });
 
+        // button "I am lucky!"
+        Button btn_i_am_lucky = view.findViewById(R.id.button_i_am_lucky);
+        btn_i_am_lucky.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_IAmLuckyFragment);
+            }
+        });
     }
 
 

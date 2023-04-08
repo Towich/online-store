@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.IAmLuckyFragment">
+
+    <Button
+        android:id="@+id/buttonGetLuckyPerfume"
+        android:layout_width="206dp"
+        android:layout_height="75dp"
+        android:text="I am lucky!"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLuckyPerfume"
+        app:layout_constraintVertical_bias="0.515" />
+
+    <TextView
+        android:id="@+id/text_rolled_perfume"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Let's roll!"
+        android:textAlignment="center"
+        android:textSize="30sp"
+
+        app:layout_constraintBottom_toTopOf="@+id/buttonGetLuckyPerfume"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLuckyPerfume" />
+
+    <ImageView
+        android:id="@+id/imageViewLuckyPerfume"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:src="@drawable/_551570"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

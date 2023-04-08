@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_storeFragment2"
             app:destination="@id/storeFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_IAmLuckyFragment"
+            app:destination="@id/IAmLuckyFragment" />
     </fragment>
 
     <fragment
@@ -29,4 +32,9 @@
         android:name="com.example.firstpractice.ui.StoreDiscountsFragment"
         android:label="Discounts"
         tools:layout="@layout/fragment_store_discounts" />
+    <fragment
+        android:id="@+id/IAmLuckyFragment"
+        android:name="com.example.firstpractice.ui.IAmLuckyFragment"
+        android:label="fragment_i_am_lucky"
+        tools:layout="@layout/fragment_i_am_lucky" />
 </navigation>
