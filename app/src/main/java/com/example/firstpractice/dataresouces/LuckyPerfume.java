@@ -1,6 +1,4 @@
-package com.example.firstpractice.model;
-
-import android.graphics.drawable.Drawable;
+package com.example.firstpractice.dataresouces;
 
 public class LuckyPerfume {
     private final int imagePerfume;

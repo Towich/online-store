@@ -1,4 +1,4 @@
-package com.example.firstpractice.ui;
+package com.example.firstpractice.ui.Fragment;
 
 import android.os.Bundle;
 
@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.firstpractice.R;
-import com.example.firstpractice.domain.LuckyPerfumeViewModel;
+import com.example.firstpractice.ui.ViewModel.LuckyPerfumeViewModel;
 
 public class IAmLuckyFragment extends Fragment {
 

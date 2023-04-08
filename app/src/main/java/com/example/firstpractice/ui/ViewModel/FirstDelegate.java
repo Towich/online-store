@@ -1,11 +1,7 @@
-package com.example.firstpractice.domain;
-
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+package com.example.firstpractice.ui.ViewModel;
 
 import com.example.firstpractice.MainContract;
-import com.example.firstpractice.MyCustomRecyclerViewAdapter;
-import com.example.firstpractice.model.Perfumes;
+import com.example.firstpractice.dataresouces.Perfumes;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.example.firstpractice;
+package com.example.firstpractice.ui.Activity;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -19,6 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.example.firstpractice.R;
 import com.example.firstpractice.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {

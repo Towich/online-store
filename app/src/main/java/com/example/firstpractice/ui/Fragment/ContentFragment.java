@@ -1,4 +1,4 @@
-package com.example.firstpractice.ui;
+package com.example.firstpractice.ui.Fragment;
 
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -24,7 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.example.firstpractice.MainActivity;
+import com.example.firstpractice.ui.Activity.MainActivity;
 import com.example.firstpractice.MyService;
 import com.example.firstpractice.R;
 import com.google.android.material.textfield.TextInputEditText;

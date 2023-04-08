@@ -1,6 +1,6 @@
-package com.example.firstpractice.domain;
+package com.example.firstpractice.datarepositories;
 
-import com.example.firstpractice.model.Shop;
+import com.example.firstpractice.dataresouces.Shop;
 
 public class ShopRepository {
     private final Shop firstShop;

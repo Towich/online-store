@@ -1,4 +1,4 @@
-package com.example.firstpractice;
+package com.example.firstpractice.ui.Adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.firstpractice.R;
 
 import java.util.List;
 
