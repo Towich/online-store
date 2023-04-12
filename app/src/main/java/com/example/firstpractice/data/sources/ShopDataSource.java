@@ -1,8 +1,8 @@
-package com.example.firstpractice.dataresouces;
+package com.example.firstpractice.data.sources;
 
 import com.example.firstpractice.R;
 
-public class ShopStorage {
+public class ShopDataSource {
     public static final String textFirstShop = "That is the first shop, located on 11-ya Parkovaya 36";
     public static final int imageFirstShop = R.drawable.shop1;
 

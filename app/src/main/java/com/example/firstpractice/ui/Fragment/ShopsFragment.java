@@ -70,7 +70,7 @@ public class ShopsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 model.createShops();
-                Log.i("Shop", "Created!");
+                Log.i("ShopModel", "Created!");
             }
         });
     }

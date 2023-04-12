@@ -12,24 +12,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.firstpractice.MainContract;
 import com.example.firstpractice.ui.Adapter.MyCustomRecyclerViewAdapter;
 import com.example.firstpractice.R;
-import com.example.firstpractice.ui.ViewModel.FirstDelegate;
+import com.example.firstpractice.ui.Presenter.StoreDiscountsPresenter;
 
 import java.util.List;
 
 
-public class StoreDiscountsFragment extends Fragment implements MainContract.View {
+public class StoreDiscountsFragment extends Fragment {
 
-    private MainContract.Delegate mDelegate;
+    private StoreDiscountsPresenter mDelegate;
     private RecyclerView recyclerView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mDelegate = new FirstDelegate(this, true);
+        mDelegate = new StoreDiscountsPresenter(this, true);
     }
 
     @Override

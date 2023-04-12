@@ -1,10 +1,10 @@
-package com.example.firstpractice.dataresouces;
+package com.example.firstpractice.data.resources;
 
-public class Shop {
+public class ShopModel {
     private final String name;
     private final int idDrawableImage;
 
-    public Shop(String name, int idDrawableImage) {
+    public ShopModel(String name, int idDrawableImage) {
         this.name = name;
         this.idDrawableImage = idDrawableImage;
     }

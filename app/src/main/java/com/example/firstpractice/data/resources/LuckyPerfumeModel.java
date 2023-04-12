@@ -1,10 +1,10 @@
-package com.example.firstpractice.dataresouces;
+package com.example.firstpractice.data.resources;
 
-public class LuckyPerfume {
+public class LuckyPerfumeModel {
     private final int imagePerfume;
     private final String namePerfume;
 
-    public LuckyPerfume(int imagePerfume, String namePerfume) {
+    public LuckyPerfumeModel(int imagePerfume, String namePerfume) {
         this.imagePerfume = imagePerfume;
         this.namePerfume = namePerfume;
     }

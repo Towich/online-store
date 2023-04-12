@@ -14,24 +14,23 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.firstpractice.MainContract;
 import com.example.firstpractice.ui.Adapter.MyCustomListViewAdapter;
 import com.example.firstpractice.R;
-import com.example.firstpractice.ui.ViewModel.FirstDelegate;
+import com.example.firstpractice.ui.Presenter.StorePresenter;
 
 import java.util.List;
 
 
-public class StoreFragment extends Fragment implements MainContract.View {
+public class StoreFragment extends Fragment{
 
-    private MainContract.Delegate mDelegate;
+    private StorePresenter mDelegate;
     private ListView listView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mDelegate = new FirstDelegate(this, false);
+        mDelegate = new StorePresenter(this, false);
     }
 
     @Override
@@ -46,10 +45,6 @@ public class StoreFragment extends Fragment implements MainContract.View {
         super.onViewCreated(view, savedInstanceState);
 
         int arguments = getArguments().getInt("perfume_to_watch");
-
-        if(arguments == 0){
-            arguments = 10;
-        }
 
         List<String> store_items = showItems(arguments);
 
@@ -67,7 +62,6 @@ public class StoreFragment extends Fragment implements MainContract.View {
         });
     }
 
-    @Override
     public List<String> showItems(int quantity) {
         return mDelegate.onViewCreatedForDelegate(quantity);
     }

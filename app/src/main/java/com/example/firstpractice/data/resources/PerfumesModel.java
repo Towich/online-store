@@ -1,15 +1,13 @@
-package com.example.firstpractice.dataresouces;
-
-import com.example.firstpractice.MainContract;
+package com.example.firstpractice.data.resources;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Perfumes implements MainContract.Repository {
+public class PerfumesModel {
     private List<String> store_items;
     private boolean premium;
 
-    public Perfumes(boolean _premium){
+    public PerfumesModel(boolean _premium){
         store_items = new ArrayList<String>();
         premium = _premium;
     }

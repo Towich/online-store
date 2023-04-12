@@ -25,7 +25,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.firstpractice.ui.Activity.MainActivity;
-import com.example.firstpractice.MyService;
+import com.example.firstpractice.services.MyService;
 import com.example.firstpractice.R;
 import com.google.android.material.textfield.TextInputEditText;
 

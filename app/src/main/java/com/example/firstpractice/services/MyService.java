@@ -1,4 +1,4 @@
-package com.example.firstpractice;
+package com.example.firstpractice.services;
 
 import android.app.PendingIntent;
 import android.app.Service;
@@ -15,6 +15,7 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
+import com.example.firstpractice.R;
 import com.example.firstpractice.ui.Activity.MainActivity;
 
 public class MyService extends Service {

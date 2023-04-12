@@ -13,7 +13,7 @@
         android:theme="@style/Theme.FirstPractice">
 
         <service
-            android:name=".MyService"
+            android:name=".services.MyService"
             android:enabled="true"
             android:exported="true" />
 
