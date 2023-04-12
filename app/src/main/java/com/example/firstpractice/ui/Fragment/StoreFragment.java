@@ -1,12 +1,10 @@
-package com.example.firstpractice.ui;
+package com.example.firstpractice.ui.Fragment;
 
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,11 +15,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.firstpractice.MainContract;
-import com.example.firstpractice.MyCustomListViewAdapter;
+import com.example.firstpractice.ui.Adapter.MyCustomListViewAdapter;
 import com.example.firstpractice.R;
-import com.example.firstpractice.domain.FirstDelegate;
+import com.example.firstpractice.ui.ViewModel.FirstDelegate;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

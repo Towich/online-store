@@ -1,4 +1,4 @@
-package com.example.firstpractice.ui;
+package com.example.firstpractice.ui.Fragment;
 
 import android.os.Bundle;
 import android.util.Log;

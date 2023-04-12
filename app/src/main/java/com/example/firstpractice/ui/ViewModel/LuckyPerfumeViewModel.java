@@ -1,14 +1,11 @@
-package com.example.firstpractice.domain;
-
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+package com.example.firstpractice.ui.ViewModel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.firstpractice.R;
-import com.example.firstpractice.model.LuckyPerfume;
+import com.example.firstpractice.dataresouces.LuckyPerfume;
 
 import java.util.ArrayList;
 import java.util.List;

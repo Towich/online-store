@@ -15,6 +15,8 @@ import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
+import com.example.firstpractice.ui.Activity.MainActivity;
+
 public class MyService extends Service {
 
     private WindowManager mWindowManager;

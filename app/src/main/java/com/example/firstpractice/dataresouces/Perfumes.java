@@ -1,4 +1,4 @@
-package com.example.firstpractice.model;
+package com.example.firstpractice.dataresouces;
 
 import com.example.firstpractice.MainContract;
 
