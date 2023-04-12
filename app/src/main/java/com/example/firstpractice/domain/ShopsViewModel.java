@@ -10,7 +10,10 @@ import com.example.firstpractice.model.ShopStorage;
 
 public class ShopsViewModel extends ViewModel {
     private final MutableLiveData<ShopRepository> shopRepository =
-            new MutableLiveData<>(new ShopRepository(new Shop("", R.drawable.logo_image), new Shop("", R.drawable.logo_image)));
+            new MutableLiveData<>(new ShopRepository(
+                    new Shop("", R.drawable.logo_image),
+                    new Shop("", R.drawable.logo_image))
+            );
 
     public LiveData<ShopRepository> getShopRepository(){
         return shopRepository;

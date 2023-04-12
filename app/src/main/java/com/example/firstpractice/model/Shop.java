@@ -1,7 +1,5 @@
 package com.example.firstpractice.model;
 
-import com.example.firstpractice.R;
-
 public class Shop {
     private final String name;
     private final int idDrawableImage;
