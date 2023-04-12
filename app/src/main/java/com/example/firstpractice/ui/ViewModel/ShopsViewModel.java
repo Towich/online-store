@@ -16,10 +16,7 @@ public class ShopsViewModel extends ViewModel {
 
     public ShopsViewModel(){
         shopRepository = new MutableLiveData<>(
-                new ShopRepository(
-                        new ShopModel("", R.drawable.logo_image),
-                        new ShopModel("", R.drawable.logo_image)
-                )
+                new ShopRepository()
         );
     }
 
@@ -28,10 +25,21 @@ public class ShopsViewModel extends ViewModel {
     }
 
     public void createShops(){
-        shopRepository.setValue(new ShopRepository(
-                new ShopModel(ShopDataSource.textFirstShop, ShopDataSource.imageFirstShop),
-                new ShopModel(ShopDataSource.textSecondShop, ShopDataSource.imageSecondShop)
-        ));
+        shopRepository.setValue(new ShopRepository());
+    }
+
+    public String getName(boolean firstShop) {
+        if(firstShop)
+            return shopRepository.getValue().getFirstShop().getName();
+        else
+            return shopRepository.getValue().getSecondShop().getName();
+    }
+
+    public int getIdDrawableImage(boolean firstShop) {
+        if(firstShop)
+            return shopRepository.getValue().getFirstShop().getIdDrawableImage();
+        else
+            return shopRepository.getValue().getSecondShop().getIdDrawableImage();
     }
 
 }
