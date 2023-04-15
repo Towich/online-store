@@ -30,48 +30,53 @@
 
     <Button
         android:id="@+id/button_store"
-        android:layout_width="190dp"
+        android:layout_width="80dp"
         android:layout_height="100dp"
-        android:text="Store"
-        android:textSize="25sp"
+        android:text="@string/store"
+        android:textSize="13sp"
         android:layout_marginStart="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_store_discounts"
-        android:layout_width="190dp"
+        android:layout_width="80dp"
         android:layout_height="100dp"
-        android:text="Discounts"
-        android:textSize="25sp"
+        android:text="@string/discounts"
+        android:textSize="13sp"
         android:layout_marginEnd="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/button_i_am_lucky"
-        android:layout_width="190dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginBottom="100dp"
-        android:text="I am lucky!"
-        android:textSize="20sp"
+        android:text="@string/i_am_lucky"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.97"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginEnd="7dp"
+        app:layout_constraintEnd_toStartOf="@+id/button_store_discounts" />
 
     <Button
         android:id="@+id/button_our_shops"
-        android:layout_width="186dp"
+        android:layout_width="100dp"
         android:layout_height="100dp"
-        android:text="Check our shops"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_store"
+        android:text="@string/check_our_shops"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="7dp"
+        app:layout_constraintStart_toEndOf="@+id/button_store" />
+
+    <Button
+        android:id="@+id/button_databases"
+        android:layout_width="130dp"
+        android:layout_height="70dp"
+        android:text="@string/databases"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/button_i_am_lucky"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.034"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/user_name_text_view"
@@ -94,8 +99,8 @@
             android:id="@+id/input_text_perfumes"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:hint="Perfumes to show.."
-            android:text="300" />
+            android:hint="@string/perfumes_to_show"
+            android:text="@string/_300" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageButton

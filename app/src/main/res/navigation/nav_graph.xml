@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_mainFragment_to_shopsFragment"
             app:destination="@id/shopsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_databaseFragment"
+            app:destination="@id/databaseFragment" />
     </fragment>
 
     <fragment
@@ -45,4 +48,9 @@
         android:name="com.example.firstpractice.ui.Fragment.ShopsFragment"
         android:label="fragment_shops"
         tools:layout="@layout/fragment_shops" />
+    <fragment
+        android:id="@+id/databaseFragment"
+        android:name="com.example.firstpractice.ui.Fragment.DatabasesFragment"
+        android:label="fragment_database"
+        tools:layout="@layout/fragment_databases" />
 </navigation>
