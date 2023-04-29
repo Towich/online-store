@@ -16,11 +16,6 @@ public class DatabasesViewModel extends ViewModel {
         saveFile = new MutableLiveData<>(new DatabasesRepository());
     }
 
-    // Get LiveData
-    public LiveData<DatabasesRepository> getAppSpecific(){
-        return saveFile;
-    }
-
     // #1 App-specific storage
 
     public void createAppSpecific(Context context){
