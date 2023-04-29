@@ -1,6 +1,11 @@
 package com.example.firstpractice.ui.Fragment;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,12 +14,16 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.firstpractice.R;
 import com.example.firstpractice.ui.ViewModel.DatabasesViewModel;
 import com.google.android.material.textfield.TextInputEditText;
+
+import java.io.File;
 
 
 public class DatabasesFragment extends Fragment {
@@ -25,6 +34,9 @@ public class DatabasesFragment extends Fragment {
 
     Button buttonSaveAppSpecificStorage;
     Button buttonLoadAppSpecificStorage;
+
+    Button buttonSaveSharedStorage;
+    Button buttonLoadSharedStorage;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +55,11 @@ public class DatabasesFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         InitViews(view);
-        ConnectToViewModel();
+
+        model = new ViewModelProvider(this).get(DatabasesViewModel.class);
+
+        CreateAppSpecific();
+        CreateSharedStorage();
     }
 
     private void InitViews(View view){
@@ -65,16 +81,43 @@ public class DatabasesFragment extends Fragment {
                 textSavedTextView.setText(model.loadDataAppSpecific());
             }
         });
+
+        buttonSaveSharedStorage = view.findViewById(R.id.buttonSaveCommonStorage);
+        buttonSaveSharedStorage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                model.saveSharedStorage(textToSaveTextInput.getText().toString());
+            }
+        });
+
+        buttonLoadSharedStorage = view.findViewById(R.id.buttonLoadCommonStorage);
+        buttonLoadSharedStorage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textSavedTextView.setText(model.loadSharedStorage());
+            }
+        });
     }
 
-    private void ConnectToViewModel(){
-        // Connecting to ViewModel
-        model = new ViewModelProvider(this).get(DatabasesViewModel.class);
-        model.getAppSpecific().observe(getViewLifecycleOwner(), saveFile -> {
-            // something doing when the saveFile is updated
-        });
+    private void CreateAppSpecific(){
+
+        // #1 | Create App-Specific file
         model.createAppSpecific(getActivity().getApplicationContext());
     }
 
+    private void CreateSharedStorage(){
 
+        // #2 | Gain permission for writing files in storage
+        if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(getActivity(), new String[]
+                    {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+        }
+
+        // #2 | Create SharedStorage file
+        model.createSharedStorage(getActivity().getApplicationContext());
+
+        // #2 | Check if we can write in storage
+        Log.d("can write", String.valueOf(Environment.getExternalStorageDirectory().canWrite()));
+    }
 }
