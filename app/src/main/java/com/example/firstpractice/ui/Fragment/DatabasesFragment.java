@@ -34,9 +34,10 @@ public class DatabasesFragment extends Fragment {
 
     Button buttonSaveAppSpecificStorage;
     Button buttonLoadAppSpecificStorage;
-
     Button buttonSaveSharedStorage;
     Button buttonLoadSharedStorage;
+    Button buttonSaveSharedPreferences;
+    Button buttonLoadSharedPreferences;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -58,14 +59,17 @@ public class DatabasesFragment extends Fragment {
 
         model = new ViewModelProvider(this).get(DatabasesViewModel.class);
 
+        // Initialize the save-load systems
         CreateAppSpecific();
         CreateSharedStorage();
+        InitializeSharedPreferences();
     }
 
     private void InitViews(View view){
         textSavedTextView = view.findViewById(R.id.textSavedString);
         textToSaveTextInput = view.findViewById(R.id.inputTextToSave);
 
+        // #1 App-specific storage buttons
         buttonSaveAppSpecificStorage = view.findViewById(R.id.buttonSaveAppSpecificStorage);
         buttonSaveAppSpecificStorage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +86,7 @@ public class DatabasesFragment extends Fragment {
             }
         });
 
+        // #2 SharedStorage buttons
         buttonSaveSharedStorage = view.findViewById(R.id.buttonSaveCommonStorage);
         buttonSaveSharedStorage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,16 +102,32 @@ public class DatabasesFragment extends Fragment {
                 textSavedTextView.setText(model.loadSharedStorage());
             }
         });
+
+        // #3 SharedPreferences buttons
+        buttonSaveSharedPreferences = view.findViewById(R.id.buttonSaveSharedPreferences);
+        buttonSaveSharedPreferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                model.saveSharedPreferences(textToSaveTextInput.getText().toString());
+            }
+        });
+
+        buttonLoadSharedPreferences = view.findViewById(R.id.buttonLoadSharedPreferences);
+        buttonLoadSharedPreferences.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                textSavedTextView.setText(model.loadSharedPreferences());
+            }
+        });
+
     }
 
     private void CreateAppSpecific(){
-
         // #1 | Create App-Specific file
-        model.createAppSpecific(getActivity().getApplicationContext());
+        model.createAppSpecific(getContext());
     }
 
     private void CreateSharedStorage(){
-
         // #2 | Gain permission for writing files in storage
         if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -115,9 +136,13 @@ public class DatabasesFragment extends Fragment {
         }
 
         // #2 | Create SharedStorage file
-        model.createSharedStorage(getActivity().getApplicationContext());
+        model.createSharedStorage(getContext());
 
         // #2 | Check if we can write in storage
         Log.d("can write", String.valueOf(Environment.getExternalStorageDirectory().canWrite()));
+    }
+
+    private void InitializeSharedPreferences(){
+        model.createSharedPreferences(getContext());
     }
 }

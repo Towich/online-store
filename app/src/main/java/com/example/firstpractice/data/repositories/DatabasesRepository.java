@@ -3,16 +3,19 @@ package com.example.firstpractice.data.repositories;
 import android.content.Context;
 
 import com.example.firstpractice.data.sources.AppSpecificDataSource;
+import com.example.firstpractice.data.sources.SharedPreferencesDataSource;
 import com.example.firstpractice.data.sources.SharedStorageDataSource;
 
 public class DatabasesRepository {
 
-    private AppSpecificDataSource appSpecificDataSource;
-    private SharedStorageDataSource sharedStorageDataSource;
+    private final AppSpecificDataSource appSpecificDataSource;
+    private final SharedStorageDataSource sharedStorageDataSource;
+    private final SharedPreferencesDataSource sharedPreferencesDataSource;
 
     public DatabasesRepository(){
         appSpecificDataSource = new AppSpecificDataSource();
         sharedStorageDataSource = new SharedStorageDataSource();
+        sharedPreferencesDataSource = new SharedPreferencesDataSource();
     }
 
     // #1 App-specific storage
@@ -36,4 +39,13 @@ public class DatabasesRepository {
     }
 
     // #3 SharedPreferences
+    public void createSharedPreferences(Context context) {
+        sharedPreferencesDataSource.create(context);
+    }
+    public void saveSharedPreferences(String dataToSave) {
+        sharedPreferencesDataSource.save(dataToSave);
+    }
+    public String loadSharedPreferences() {
+        return sharedPreferencesDataSource.load();
+    }
 }

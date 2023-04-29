@@ -15,11 +15,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class SharedStorageDataSource extends AppCompatActivity {
+public class SharedStorageDataSource {
     private File saveFile;
     private Scanner scan;
     private final String fileName;
-    private Context context;
 
     public SharedStorageDataSource(){
         fileName = "file2.txt";
@@ -38,21 +37,16 @@ public class SharedStorageDataSource extends AppCompatActivity {
 
 
     }
-    public void save(String toSave){
-        if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                == PackageManager.PERMISSION_GRANTED) {
-            try {
-                FileWriter writer = new FileWriter(saveFile);
-                writer.write(toSave);
-                writer.close();
-            } catch (IOException e) {
-                Log.e(getClass().toString(), "ERROR: Can't write in file '" + fileName + "': " + e.toString());
-            }
-        }
-        else {
-            Log.e(getClass().toString(),"NO PERMISSION!");
+    public void save(String toSave) {
+        try {
+            FileWriter writer = new FileWriter(saveFile);
+            writer.write(toSave);
+            writer.close();
+        } catch (IOException e) {
+            Log.e(getClass().toString(), "ERROR: Can't write in file '" + fileName + "': " + e.toString());
         }
     }
+
     public String load(){
         StringBuilder result = new StringBuilder();
 

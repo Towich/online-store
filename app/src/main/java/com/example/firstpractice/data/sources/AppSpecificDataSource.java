@@ -11,11 +11,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class AppSpecificDataSource extends AppCompatActivity {
+public class AppSpecificDataSource {
     private File saveFile;
     private Scanner scan;
     private final String fileName;
-    private Context context;
 
     public AppSpecificDataSource(){
         fileName = "file1.txt";
@@ -25,7 +24,6 @@ public class AppSpecificDataSource extends AppCompatActivity {
     public void createFile(Context context){
         saveFile = new File(context.getFilesDir(), fileName);
         Log.i(fileName, context.getFilesDir().toString());
-        this.context = context;
     }
     public void save(String toSave){
         try{

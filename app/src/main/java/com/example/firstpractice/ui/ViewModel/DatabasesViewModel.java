@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.firstpractice.data.repositories.DatabasesRepository;
 
 public class DatabasesViewModel extends ViewModel {
-    private DatabasesRepository repository;
+    private final DatabasesRepository repository;
 
     public DatabasesViewModel(){
         repository = new DatabasesRepository();
@@ -37,5 +37,14 @@ public class DatabasesViewModel extends ViewModel {
         return repository.loadSharedStorage();
     }
 
-    // #3 Shared
+    // #3 SharedPreferences
+    public void createSharedPreferences(Context context) {
+        repository.createSharedPreferences(context);
+    }
+    public void saveSharedPreferences(String dataToSave) {
+        repository.saveSharedPreferences(dataToSave);
+    }
+    public String loadSharedPreferences() {
+        return repository.loadSharedPreferences();
+    }
 }
