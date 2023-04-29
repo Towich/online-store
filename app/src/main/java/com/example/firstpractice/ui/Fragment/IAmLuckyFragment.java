@@ -49,9 +49,9 @@ public class IAmLuckyFragment extends Fragment {
 
         // Connecting to ViewModel
         model = new ViewModelProvider(this).get(LuckyPerfumeViewModel.class);
-        model.getLuckyPerfume().observe(getViewLifecycleOwner(), luckyPerfume -> {
-            imagePerfume.setImageResource(luckyPerfume.getImagePerfume());
-            textPerfume.setText(luckyPerfume.getNamePerfume());
+        model.luckyPerfume.observe(getViewLifecycleOwner(), luckyPerfume -> {
+            imagePerfume.setImageResource(model.getPerfume().getImagePerfume());
+            textPerfume.setText(model.getPerfume().getNamePerfume());
         });
 
         // Adding listener to button

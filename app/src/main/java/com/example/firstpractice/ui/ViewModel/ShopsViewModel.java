@@ -9,37 +9,14 @@ import com.example.firstpractice.data.resources.ShopModel;
 import com.example.firstpractice.data.sources.ShopDataSource;
 import com.example.firstpractice.data.repositories.ShopRepository;
 
+import java.util.List;
+
 public class ShopsViewModel extends ViewModel {
 
-    private final MutableLiveData<ShopRepository> shopRepository; // LiveData
-
+    public LiveData<List<ShopModel>> shops; // LiveData
 
     public ShopsViewModel(){
-        shopRepository = new MutableLiveData<>(
-                new ShopRepository()
-        );
+        ShopRepository shopRepository = new ShopRepository();
+        shops = shopRepository.getData();
     }
-
-    public LiveData<ShopRepository> getShopRepository(){
-        return shopRepository;
-    }
-
-    public void createShops(){
-        shopRepository.setValue(new ShopRepository());
-    }
-
-    public String getName(boolean firstShop) {
-        if(firstShop)
-            return shopRepository.getValue().getFirstShop().getName();
-        else
-            return shopRepository.getValue().getSecondShop().getName();
-    }
-
-    public int getIdDrawableImage(boolean firstShop) {
-        if(firstShop)
-            return shopRepository.getValue().getFirstShop().getIdDrawableImage();
-        else
-            return shopRepository.getValue().getSecondShop().getIdDrawableImage();
-    }
-
 }

@@ -57,21 +57,12 @@ public class ShopsFragment extends Fragment {
 
         // Connecting to ViewModel
         model = new ViewModelProvider(this).get(ShopsViewModel.class);
-        model.getShopRepository().observe(getViewLifecycleOwner(), shopRepository -> {
-            image_first_shop.setImageResource(model.getIdDrawableImage(true));
-            text_first_shop.setText(model.getName(true));
+        model.shops.observe(getViewLifecycleOwner(), shops -> {
+            image_first_shop.setImageResource(shops.get(0).getIdDrawableImage());
+            text_first_shop.setText(shops.get(0).getName());
 
-            image_second_shop.setImageResource(model.getIdDrawableImage(false));
-            text_second_shop.setText(model.getName(false));
-        });
-
-        // Adding listener to button
-        button_load_our_shops.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                model.createShops();
-                Log.i("ShopModel", "Created!");
-            }
+            image_second_shop.setImageResource(shops.get(1).getIdDrawableImage());
+            text_second_shop.setText(shops.get(1).getName());
         });
     }
 }
