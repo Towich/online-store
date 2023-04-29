@@ -9,34 +9,33 @@ import androidx.lifecycle.ViewModel;
 import com.example.firstpractice.data.repositories.DatabasesRepository;
 
 public class DatabasesViewModel extends ViewModel {
-
-    private final MutableLiveData<DatabasesRepository> saveFile; // LiveData
+    private DatabasesRepository repository;
 
     public DatabasesViewModel(){
-        saveFile = new MutableLiveData<>(new DatabasesRepository());
+        repository = new DatabasesRepository();
     }
 
     // #1 App-specific storage
-
     public void createAppSpecific(Context context){
-        saveFile.getValue().createFileAppSpecific(context);
+        repository.createFileAppSpecific(context);
     }
     public void saveDataAppSpecific(String dataToSave){
-        saveFile.getValue().saveAppSpecific(dataToSave);
+        repository.saveAppSpecific(dataToSave);
     }
     public String loadDataAppSpecific(){
-        return saveFile.getValue().loadAppSpecific();
+        return repository.loadAppSpecific();
     }
 
     // #2 SharedStorage
-
     public void createSharedStorage(Context context){
-        saveFile.getValue().createFileSharedStorage(context);
+        repository.createFileSharedStorage(context);
     }
     public void saveSharedStorage(String dataToSave){
-        saveFile.getValue().saveSharedStorage(dataToSave);
+        repository.saveSharedStorage(dataToSave);
     }
     public String loadSharedStorage(){
-        return saveFile.getValue().loadSharedStorage();
+        return repository.loadSharedStorage();
     }
+
+    // #3 Shared
 }

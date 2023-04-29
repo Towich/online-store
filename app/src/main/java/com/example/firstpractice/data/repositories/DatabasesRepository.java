@@ -2,37 +2,38 @@ package com.example.firstpractice.data.repositories;
 
 import android.content.Context;
 
-import com.example.firstpractice.data.resources.DatabasesDataSource;
+import com.example.firstpractice.data.sources.AppSpecificDataSource;
+import com.example.firstpractice.data.sources.SharedStorageDataSource;
 
 public class DatabasesRepository {
 
-    private DatabasesDataSource databasesDataSource;
+    private AppSpecificDataSource appSpecificDataSource;
+    private SharedStorageDataSource sharedStorageDataSource;
 
     public DatabasesRepository(){
-        databasesDataSource = new DatabasesDataSource();
+        appSpecificDataSource = new AppSpecificDataSource();
+        sharedStorageDataSource = new SharedStorageDataSource();
     }
 
     // #1 App-specific storage
-
-    public void createFileAppSpecific(Context context) {
-        databasesDataSource.createFileAppSpecific(context);
-    }
+    public void createFileAppSpecific(Context context) { appSpecificDataSource.createFile(context); }
     public void saveAppSpecific(String toSave){
-        databasesDataSource.saveAppSpecific(toSave);
+        appSpecificDataSource.save(toSave);
     }
     public String loadAppSpecific(){
-        return databasesDataSource.loadAppSpecific();
+        return appSpecificDataSource.load();
     }
 
     // #2 SharedStorage
-
     public void createFileSharedStorage(Context context) {
-        databasesDataSource.createFileSharedStorage(context);
+        sharedStorageDataSource.createFile(context);
     }
     public void saveSharedStorage(String dataToSave) {
-        databasesDataSource.saveSharedStorage(dataToSave);
+        sharedStorageDataSource.save(dataToSave);
     }
     public String loadSharedStorage() {
-        return databasesDataSource.loadSharedStorage();
+        return sharedStorageDataSource.load();
     }
+
+    // #3 SharedPreferences
 }
