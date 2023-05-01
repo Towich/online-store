@@ -37,7 +37,8 @@ public class StoreFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getParentFragmentManager().setFragmentResultListener(NewPerfumeFragment.REPLY_PERFUME, this, new FragmentResultListener() {
+        getParentFragmentManager().setFragmentResultListener(NewPerfumeFragment.REPLY_PERFUME,
+                this, new FragmentResultListener() {
             @Override
             public void onFragmentResult(@NonNull String key, @NonNull Bundle bundle) {
                 String namePerfume = bundle.getString(NewPerfumeFragment.REPLY_NAME);
