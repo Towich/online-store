@@ -6,7 +6,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,9 +21,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.firstpractice.R;
+import com.example.firstpractice.data.databases.entity.CommonPerfumeEntity;
 import com.example.firstpractice.ui.Adapter.MyCustomRecyclerViewAdapter;
 import com.example.firstpractice.ui.Presenter.StorePresenter;
 import com.example.firstpractice.ui.ViewModel.CommonPerfumeViewModel;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -33,6 +37,16 @@ public class StoreFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getParentFragmentManager().setFragmentResultListener(NewPerfumeFragment.REPLY_PERFUME, this, new FragmentResultListener() {
+            @Override
+            public void onFragmentResult(@NonNull String key, @NonNull Bundle bundle) {
+                String namePerfume = bundle.getString(NewPerfumeFragment.REPLY_NAME);
+                int pricePerfume = bundle.getInt(NewPerfumeFragment.REPLY_PRICE);
+
+                CommonPerfumeEntity word = new CommonPerfumeEntity(namePerfume, pricePerfume);
+                mCommonPerfumeViewModel.insert(word);
+            }
+        });
     }
 
     @Override
@@ -50,6 +64,15 @@ public class StoreFragment extends Fragment{
         final MyCustomRecyclerViewAdapter adapter = new MyCustomRecyclerViewAdapter(new MyCustomRecyclerViewAdapter.WordDiff());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        // FloatingActionButton
+        FloatingActionButton fab = view.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_storeFragment_to_newPerfumeFragment);
+            }
+        });
 
         mCommonPerfumeViewModel = new ViewModelProvider(this).get(CommonPerfumeViewModel.class);
 
