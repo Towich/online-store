@@ -21,7 +21,6 @@ public class CommonPerfumeEntity {
     public String getName(){
         return name;
     }
-
     public void setName(@NonNull String name) {
         this.name = name;
     }
@@ -29,7 +28,6 @@ public class CommonPerfumeEntity {
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
@@ -37,7 +35,6 @@ public class CommonPerfumeEntity {
     public int getId() {
         return id;
     }
-
     public void setId(int id) {
         this.id = id;
     }
