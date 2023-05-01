@@ -31,7 +31,11 @@
         android:id="@+id/storeFragment"
         android:name="com.example.firstpractice.ui.Fragment.StoreFragment"
         android:label="Store"
-        tools:layout="@layout/fragment_store" />
+        tools:layout="@layout/fragment_store" >
+        <action
+            android:id="@+id/action_storeFragment_to_newPerfumeFragment"
+            app:destination="@id/newPerfumeFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/storeDiscountsFragment"
@@ -53,4 +57,12 @@
         android:name="com.example.firstpractice.ui.Fragment.DatabasesFragment"
         android:label="fragment_database"
         tools:layout="@layout/fragment_databases" />
+    <fragment
+        android:id="@+id/newPerfumeFragment"
+        android:name="com.example.firstpractice.ui.Fragment.NewPerfumeFragment"
+        android:label="NewPerfumeFragment" >
+        <action
+            android:id="@+id/action_newPerfumeFragment_to_storeFragment"
+            app:destination="@id/storeFragment" />
+    </fragment>
 </navigation>

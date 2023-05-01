@@ -1,5 +1,6 @@
 package com.example.firstpractice.ui.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -57,5 +58,4 @@ public class StoreFragment extends Fragment{
             adapter.submitList(words);
         });
     }
-
 }

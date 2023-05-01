@@ -15,4 +15,10 @@
     <string name="store">Store</string>
     <string name="perfumes_to_show">Perfumes to show..</string>
     <string name="_300">300</string>
+
+    <string name="add_word">Add perfume</string>
+    <string name="hint_word">Perfume...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Perfume not saved because it is empty.</string>
+    <string name="price">Price...</string>
 </resources>

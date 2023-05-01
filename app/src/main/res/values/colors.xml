@@ -11,4 +11,7 @@
     <color name="olive_brown">#6f4f28</color>
     <color name="blue_green">#00836e</color>
     <color name="red">#ff0000</color>
+
+    <color name="buttonLabel">#FFFFFF</color>
+    <color name="colorPrimary">#AFAFAF</color>
 </resources>
