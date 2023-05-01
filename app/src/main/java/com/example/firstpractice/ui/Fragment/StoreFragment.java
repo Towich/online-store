@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,23 +17,21 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.firstpractice.ui.Adapter.MyCustomListViewAdapter;
 import com.example.firstpractice.R;
+import com.example.firstpractice.ui.Adapter.MyCustomRecyclerViewAdapter;
 import com.example.firstpractice.ui.Presenter.StorePresenter;
+import com.example.firstpractice.ui.ViewModel.CommonPerfumeViewModel;
 
 import java.util.List;
 
 
 public class StoreFragment extends Fragment{
 
-    private StorePresenter mDelegate;
-    private ListView listView;
+    private CommonPerfumeViewModel mCommonPerfumeViewModel;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mDelegate = new StorePresenter(this, false);
     }
 
     @Override
@@ -44,25 +45,17 @@ public class StoreFragment extends Fragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        int arguments = getArguments().getInt("perfume_to_watch");
+        RecyclerView recyclerView = view.findViewById(R.id.recycler_view_store);
+        final MyCustomRecyclerViewAdapter adapter = new MyCustomRecyclerViewAdapter(new MyCustomRecyclerViewAdapter.WordDiff());
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        List<String> store_items = showItems(arguments);
+        mCommonPerfumeViewModel = new ViewModelProvider(this).get(CommonPerfumeViewModel.class);
 
-        MyCustomListViewAdapter listViewAdapter = new MyCustomListViewAdapter(getActivity(), R.layout.store_item, store_items);
-
-        listView = view.findViewById(R.id.list_view);
-        listView.setAdapter(listViewAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getContext(), store_items.get(i), Toast.LENGTH_SHORT).show();
-                Log.i("ListView", store_items.get(i));
-            }
+        mCommonPerfumeViewModel.getAllCommonPerfumes().observe(getActivity(), words -> {
+            // Update the cached copy of the words in the adapter.
+            adapter.submitList(words);
         });
     }
 
-    public List<String> showItems(int quantity) {
-        return mDelegate.onViewCreatedForDelegate(quantity);
-    }
 }

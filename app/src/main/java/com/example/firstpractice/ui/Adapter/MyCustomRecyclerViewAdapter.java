@@ -1,68 +1,48 @@
 package com.example.firstpractice.ui.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.firstpractice.R;
+import com.example.firstpractice.data.databases.entity.CommonPerfumeEntity;
 
 import java.util.List;
 
-public class MyCustomRecyclerViewAdapter extends RecyclerView.Adapter<MyCustomRecyclerViewAdapter.ViewHolder> {
-    private LayoutInflater inflater;
-    private List<String> store_items;
-    private Context context;
+public class MyCustomRecyclerViewAdapter extends ListAdapter<CommonPerfumeEntity, CommonPerfumeViewHolder> {
 
-    public MyCustomRecyclerViewAdapter(Context context, List<String> items){
-        store_items = items;
-        this.context = context;
-        inflater = LayoutInflater.from(context);
+    public MyCustomRecyclerViewAdapter(@NonNull DiffUtil.ItemCallback<CommonPerfumeEntity> diffCallback) {
+        super(diffCallback);
     }
 
     @Override
-    public int getItemCount() {
-        return store_items.size();
-    }
-
-    @NonNull
-    @Override
-    public MyCustomRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.store_item, parent, false);
-        return new ViewHolder(view);
+    public CommonPerfumeViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return CommonPerfumeViewHolder.create(parent);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyCustomRecyclerViewAdapter.ViewHolder holder, int position) {
-        holder.store_item_text.setText(store_items.get(position));
-        holder.store_item_image.setImageResource(R.drawable._551570);
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, store_items.get(holder.getAdapterPosition()), Toast.LENGTH_SHORT).show();
-                Log.i("RecyclerView", store_items.get(holder.getAdapterPosition()));
-            }
-        });
+    public void onBindViewHolder(CommonPerfumeViewHolder holder, int position) {
+        CommonPerfumeEntity current = getItem(position);
+        holder.bind(current.getName(), current.getPrice());
     }
+    public static class WordDiff extends DiffUtil.ItemCallback<CommonPerfumeEntity> {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView store_item_text;
-        ImageView store_item_image;
+        @Override
+        public boolean areItemsTheSame(@NonNull CommonPerfumeEntity oldItem, @NonNull CommonPerfumeEntity newItem) {
+            return oldItem == newItem;
+        }
 
-        public ViewHolder(View view){
-            super(view);
-            store_item_text = view.findViewById(R.id.store_item_text);
-            store_item_image = view.findViewById(R.id.store_item_image);
+        @Override
+        public boolean areContentsTheSame(@NonNull CommonPerfumeEntity oldItem, @NonNull CommonPerfumeEntity newItem) {
+            return oldItem.getName().equals(newItem.getName());
         }
     }
 }
-
-

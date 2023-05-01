@@ -5,10 +5,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.Fragment.StoreFragment">
 
-    <ListView
-        android:id="@+id/list_view"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_store"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        />
+        android:layout_height="match_parent" />
 
 </FrameLayout>
