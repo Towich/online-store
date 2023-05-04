@@ -29,7 +29,7 @@ public class SharedStorageDataSource {
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED) {
             Log.i(fileName, Environment.getExternalStorageDirectory().toString());
-            saveFile = new File(Environment.getExternalStorageDirectory(), fileName);
+            saveFile = new File(Environment.getExternalStorageDirectory() + "/" + Environment.DIRECTORY_DOWNLOADS, fileName);
         }
         else {
             Log.e(getClass().toString(),"NO PERMISSION!");
