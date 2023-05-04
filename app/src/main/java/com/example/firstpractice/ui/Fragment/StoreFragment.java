@@ -1,6 +1,5 @@
 package com.example.firstpractice.ui.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,22 +11,15 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.Toast;
 
 import com.example.firstpractice.R;
 import com.example.firstpractice.data.databases.entity.CommonPerfumeEntity;
 import com.example.firstpractice.ui.Adapter.MyCustomRecyclerViewAdapter;
-import com.example.firstpractice.ui.Presenter.StorePresenter;
 import com.example.firstpractice.ui.ViewModel.CommonPerfumeViewModel;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.List;
 
 
 public class StoreFragment extends Fragment{

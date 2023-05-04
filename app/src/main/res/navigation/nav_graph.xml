@@ -11,9 +11,6 @@
         android:label="Main"
         tools:layout="@layout/fragment_main" >
         <action
-            android:id="@+id/action_mainFragment_to_storeDiscountsFragment2"
-            app:destination="@id/storeDiscountsFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_storeFragment2"
             app:destination="@id/storeFragment" />
         <action
@@ -37,11 +34,6 @@
             app:destination="@id/newPerfumeFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/storeDiscountsFragment"
-        android:name="com.example.firstpractice.ui.Fragment.StoreDiscountsFragment"
-        android:label="Discounts"
-        tools:layout="@layout/fragment_store_discounts" />
     <fragment
         android:id="@+id/IAmLuckyFragment"
         android:name="com.example.firstpractice.ui.Fragment.IAmLuckyFragment"
