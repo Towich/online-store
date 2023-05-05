@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.firstpractice.ui.Fragment.ContentFragment"
+        android:name="com.example.firstpractice.ui.Fragment.MainFragment"
         android:label="Main"
         tools:layout="@layout/fragment_main" >
         <action
@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_mainFragment_to_databaseFragment"
             app:destination="@id/databaseFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_contactsFragment"
+            app:destination="@id/contactsFragment" />
     </fragment>
 
     <fragment
@@ -57,4 +60,9 @@
             android:id="@+id/action_newPerfumeFragment_to_storeFragment"
             app:destination="@id/storeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/contactsFragment"
+        android:name="com.example.firstpractice.ui.Fragment.ContactsFragment"
+        android:label="fragment_contacts"
+        tools:layout="@layout/fragment_contacts" />
 </navigation>

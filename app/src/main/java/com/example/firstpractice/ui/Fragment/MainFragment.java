@@ -16,7 +16,7 @@ import android.widget.Button;
 import com.example.firstpractice.R;
 
 
-public class ContentFragment extends Fragment {
+public class MainFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,15 @@ public class ContentFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_databaseFragment);
+            }
+        });
+
+        // button "Contacts"
+        Button btn_contacts = view.findViewById(R.id.button_store_contacts);
+        btn_contacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_contactsFragment);
             }
         });
     }

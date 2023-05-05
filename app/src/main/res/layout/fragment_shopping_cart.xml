@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/layout_shopping_cart"
-    tools:context=".ui.Fragment.ContentFragment">
+    tools:context=".ui.Fragment.MainFragment">
 
     <Button
         android:id="@+id/button_exit"
