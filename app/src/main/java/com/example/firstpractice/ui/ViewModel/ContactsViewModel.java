@@ -27,7 +27,7 @@ public class ContactsViewModel extends AndroidViewModel {
         // The intent does not have a URI, so declare the "text/plain" MIME type
         emailIntent.setType("text/plain");
 
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {ContactsDataSource.EMAIL}); // recipients
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[] {ContactsDataSource.EMAIL}); // email recipients
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Идеи/предложения");
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Добрый день! У меня есть следующее предложение:");
 

@@ -21,4 +21,5 @@
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Perfume not saved because it is empty.</string>
     <string name="price">Price...</string>
+    <string name="title_activity_external_data">ExternalDataActivity</string>
 </resources>
