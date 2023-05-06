@@ -10,6 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.firstpractice.data.databases.dao.CommonPerfumeDao;
 import com.example.firstpractice.data.databases.entity.CommonPerfumeEntity;
+import com.example.firstpractice.data.resources.CommonPerfumeModel;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

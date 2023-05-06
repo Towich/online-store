@@ -14,12 +14,13 @@ import androidx.recyclerview.widget.ListAdapter;
 
 import com.example.firstpractice.R;
 import com.example.firstpractice.data.databases.entity.CommonPerfumeEntity;
+import com.example.firstpractice.data.resources.CommonPerfumeModel;
 
 import java.util.List;
 
-public class MyCustomRecyclerViewAdapter extends ListAdapter<CommonPerfumeEntity, CommonPerfumeViewHolder> {
+public class MyCustomRecyclerViewAdapter extends ListAdapter<CommonPerfumeModel, CommonPerfumeViewHolder> {
 
-    public MyCustomRecyclerViewAdapter(@NonNull DiffUtil.ItemCallback<CommonPerfumeEntity> diffCallback) {
+    public MyCustomRecyclerViewAdapter(@NonNull DiffUtil.ItemCallback<CommonPerfumeModel> diffCallback) {
         super(diffCallback);
     }
 
@@ -30,18 +31,18 @@ public class MyCustomRecyclerViewAdapter extends ListAdapter<CommonPerfumeEntity
 
     @Override
     public void onBindViewHolder(CommonPerfumeViewHolder holder, int position) {
-        CommonPerfumeEntity current = getItem(position);
+        CommonPerfumeModel current = getItem(position);
         holder.bind(current.getName(), current.getPrice());
     }
-    public static class WordDiff extends DiffUtil.ItemCallback<CommonPerfumeEntity> {
+    public static class WordDiff extends DiffUtil.ItemCallback<CommonPerfumeModel> {
 
         @Override
-        public boolean areItemsTheSame(@NonNull CommonPerfumeEntity oldItem, @NonNull CommonPerfumeEntity newItem) {
+        public boolean areItemsTheSame(@NonNull CommonPerfumeModel oldItem, @NonNull CommonPerfumeModel newItem) {
             return oldItem == newItem;
         }
 
         @Override
-        public boolean areContentsTheSame(@NonNull CommonPerfumeEntity oldItem, @NonNull CommonPerfumeEntity newItem) {
+        public boolean areContentsTheSame(@NonNull CommonPerfumeModel oldItem, @NonNull CommonPerfumeModel newItem) {
             return oldItem.getName().equals(newItem.getName());
         }
     }

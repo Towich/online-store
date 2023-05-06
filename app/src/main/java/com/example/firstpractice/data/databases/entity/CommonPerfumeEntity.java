@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.firstpractice.data.resources.CommonPerfumeModel;
+
 @Entity(tableName = "common_perfume_table")
 public class CommonPerfumeEntity {
     @PrimaryKey(autoGenerate = true)
@@ -37,5 +39,9 @@ public class CommonPerfumeEntity {
     }
     public void setId(int id) {
         this.id = id;
+    }
+
+    public CommonPerfumeModel toModel(){
+        return new CommonPerfumeModel(name, price);
     }
 }

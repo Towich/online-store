@@ -7,12 +7,13 @@ import androidx.lifecycle.LiveData;
 
 import com.example.firstpractice.data.databases.entity.CommonPerfumeEntity;
 import com.example.firstpractice.data.repositories.CommonPerfumeRepository;
+import com.example.firstpractice.data.resources.CommonPerfumeModel;
 
 import java.util.List;
 
 public class CommonPerfumeViewModel extends AndroidViewModel {
     private CommonPerfumeRepository mRepository;
-    private final LiveData<List<CommonPerfumeEntity>> mAllCommonPerfumes;
+    private final LiveData<List<CommonPerfumeModel>> mAllCommonPerfumes;
 
     public CommonPerfumeViewModel(Application application){
         super(application);
@@ -20,7 +21,7 @@ public class CommonPerfumeViewModel extends AndroidViewModel {
         mAllCommonPerfumes = mRepository.getAllCommonPerfumes();
     }
 
-    public LiveData<List<CommonPerfumeEntity>> getAllCommonPerfumes(){ return mAllCommonPerfumes; }
+    public LiveData<List<CommonPerfumeModel>> getAllCommonPerfumes(){ return mAllCommonPerfumes; }
     public void insert(CommonPerfumeEntity perfume){
         mRepository.insert(perfume);
     }
