@@ -4,17 +4,17 @@ import android.content.Context;
 
 import com.example.firstpractice.data.sources.AppSpecificDataSource;
 import com.example.firstpractice.data.sources.SharedPreferencesDataSource;
-import com.example.firstpractice.data.sources.SharedStorageDataSource;
+import com.example.firstpractice.data.sources.ExternalStorageDataSource;
 
 public class DatabasesRepository {
 
     private final AppSpecificDataSource appSpecificDataSource;
-    private final SharedStorageDataSource sharedStorageDataSource;
+    private final ExternalStorageDataSource externalStorageDataSource;
     private final SharedPreferencesDataSource sharedPreferencesDataSource;
 
     public DatabasesRepository(){
         appSpecificDataSource = new AppSpecificDataSource();
-        sharedStorageDataSource = new SharedStorageDataSource();
+        externalStorageDataSource = new ExternalStorageDataSource();
         sharedPreferencesDataSource = new SharedPreferencesDataSource();
     }
 
@@ -29,18 +29,18 @@ public class DatabasesRepository {
 
     // #2 SharedStorage
     public void createFileSharedStorage(Context context) {
-        sharedStorageDataSource.createFile(context);
+        externalStorageDataSource.createFile(context);
     }
     public void saveSharedStorage(String dataToSave) {
-        sharedStorageDataSource.save(dataToSave);
+        externalStorageDataSource.save(dataToSave);
     }
     public String loadSharedStorage() {
-        return sharedStorageDataSource.load();
+        return externalStorageDataSource.load();
     }
 
     // #3 SharedPreferences
     public void createSharedPreferences(Context context) {
-        sharedPreferencesDataSource.create(context);
+        sharedPreferencesDataSource.createFile(context);
     }
     public void saveSharedPreferences(String dataToSave) {
         sharedPreferencesDataSource.save(dataToSave);

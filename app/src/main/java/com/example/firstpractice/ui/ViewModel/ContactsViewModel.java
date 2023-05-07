@@ -16,11 +16,13 @@ public class ContactsViewModel extends AndroidViewModel {
         super(application);
     }
 
+    // Create Intent with "Phone Number"
     public Intent getIntentMakeCall(){
         Uri number = Uri.parse("tel:" + ContactsDataSource.PHONE_NUMBER);
         return new Intent(Intent.ACTION_DIAL, number);
     }
 
+    // Create Intent with "E-mail"
     public Intent getIntentSendEmail(){
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 

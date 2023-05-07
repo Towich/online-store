@@ -12,8 +12,8 @@ import com.example.firstpractice.data.resources.CommonPerfumeModel;
 import java.util.List;
 
 public class CommonPerfumeViewModel extends AndroidViewModel {
-    private CommonPerfumeRepository mRepository;
-    private final LiveData<List<CommonPerfumeModel>> mAllCommonPerfumes;
+    private final CommonPerfumeRepository mRepository; // Repository
+    private final LiveData<List<CommonPerfumeModel>> mAllCommonPerfumes; // List of perfumes from a Database
 
     public CommonPerfumeViewModel(Application application){
         super(application);

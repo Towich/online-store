@@ -21,7 +21,7 @@ import com.example.firstpractice.ui.ViewModel.ContactsViewModel;
 
 public class ContactsFragment extends Fragment {
 
-    private ContactsViewModel mContactsViewModel;
+    private ContactsViewModel mContactsViewModel;   // ViewModel
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,15 +39,17 @@ public class ContactsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // Initialize ViewModel
         mContactsViewModel = new ViewModelProvider(this).get(ContactsViewModel.class);
 
-        // Buttons
+        // *Buttons*
 
         // Button "Make a call"
         Button button_made_call = view.findViewById(R.id.button_made_call);
         button_made_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Start Intent with "Phone Number"
                 startActivity(mContactsViewModel.getIntentMakeCall());
             }
         });
@@ -57,6 +59,7 @@ public class ContactsFragment extends Fragment {
         button_send_email.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Start Intent with "Email"
                 startActivity(mContactsViewModel.getIntentSendEmail());
             }
         });

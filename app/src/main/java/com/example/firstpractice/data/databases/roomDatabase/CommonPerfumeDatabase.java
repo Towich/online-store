@@ -25,6 +25,7 @@ public abstract class CommonPerfumeDatabase extends RoomDatabase {
     public static final ExecutorService databaseWriteExecutor =
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
+    // Singleton
     public static CommonPerfumeDatabase getDatabase(final Context context) {
         if (INSTANCE == null) {
             synchronized (CommonPerfumeDatabase.class) {
@@ -39,6 +40,7 @@ public abstract class CommonPerfumeDatabase extends RoomDatabase {
         return INSTANCE;
     }
 
+    // Callback 'onCreate'
     public static final RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {

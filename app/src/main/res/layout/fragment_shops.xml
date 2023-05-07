@@ -64,16 +64,5 @@
         app:layout_constraintStart_toEndOf="@+id/image_view_first_shop"
         app:layout_constraintTop_toBottomOf="@+id/text_view_first_shop" />
 
-    <Button
-        android:id="@+id/button_load_our_shops"
-        android:layout_width="206dp"
-        android:layout_height="75dp"
-        android:text="Load our shops"
-        android:layout_marginBottom="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintVertical_bias="0.515" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

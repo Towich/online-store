@@ -28,16 +28,16 @@ import java.io.File;
 
 public class DatabasesFragment extends Fragment {
 
-    DatabasesViewModel model;
-    TextView textSavedTextView;
-    TextInputEditText textToSaveTextInput;
+    DatabasesViewModel model;   // ViewModel
+    TextView textSavedTextView; // Displaying saved text
+    TextInputEditText textToSaveTextInput;  // Input text to save
 
-    Button buttonSaveAppSpecificStorage;
-    Button buttonLoadAppSpecificStorage;
-    Button buttonSaveSharedStorage;
-    Button buttonLoadSharedStorage;
-    Button buttonSaveSharedPreferences;
-    Button buttonLoadSharedPreferences;
+    Button buttonSaveAppSpecificStorage;    // Save in App-Specific Storage Button
+    Button buttonLoadAppSpecificStorage;    // Load from App-Specific Storage Button
+    Button buttonSaveSharedStorage;         // Save in External Storage Button
+    Button buttonLoadSharedStorage;         // Load from External Storage Button
+    Button buttonSaveSharedPreferences;     // Save in SharedPreferences Button
+    Button buttonLoadSharedPreferences;     // Load from SharedPreferences Button
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -123,23 +123,20 @@ public class DatabasesFragment extends Fragment {
     }
 
     private void CreateAppSpecific(){
-        // #1 | Create App-Specific file
+        // Create App-Specific file
         model.createAppSpecific(getContext());
     }
 
     private void CreateSharedStorage(){
-        // #2 | Gain permission for writing files in storage
+        // Gain permission for writing files in storage
         if (ContextCompat.checkSelfPermission(getContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(getActivity(), new String[]
                     {Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
 
-        // #2 | Create SharedStorage file
+        // Create SharedStorage file
         model.createSharedStorage(getContext());
-
-        // #2 | Check if we can write in storage
-        Log.d("can write", String.valueOf(Environment.getExternalStorageDirectory().canWrite()));
     }
 
     private void InitializeSharedPreferences(){

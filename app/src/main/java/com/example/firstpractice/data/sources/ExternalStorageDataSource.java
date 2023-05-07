@@ -6,7 +6,6 @@ import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import java.io.File;
@@ -15,16 +14,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class SharedStorageDataSource {
+public class ExternalStorageDataSource implements IStorage {
     private File saveFile;
     private Scanner scan;
     private final String fileName;
 
-    public SharedStorageDataSource(){
+    public ExternalStorageDataSource(){
         fileName = "file2.txt";
     }
 
-    // #2 SharedStorage (create, save and load)
     public void createFile(Context context){
         if (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE)
                 == PackageManager.PERMISSION_GRANTED) {

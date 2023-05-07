@@ -11,6 +11,8 @@ import com.example.firstpractice.data.sources.ShopDataSource;
 import java.util.List;
 
 public class LuckyPerfumeRepository {
+
+    // Get lucky perfume from DataSource by index
     public MutableLiveData<LuckyPerfumeModel> getData(int index) {
         return LuckyPerfumeDataSource.createLuckyPerfume(index);
     }

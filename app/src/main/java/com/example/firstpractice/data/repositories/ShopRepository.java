@@ -8,6 +8,8 @@ import com.example.firstpractice.data.sources.ShopDataSource;
 import java.util.List;
 
 public class ShopRepository {
+
+    // Get LiveData List from DataSource
     public LiveData<List<ShopModel>> getData() {
         return ShopDataSource.createShopsList();
     }

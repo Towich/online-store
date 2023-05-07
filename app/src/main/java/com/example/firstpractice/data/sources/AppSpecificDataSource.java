@@ -3,15 +3,13 @@ package com.example.firstpractice.data.sources;
 import android.content.Context;
 import android.util.Log;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class AppSpecificDataSource {
+public class AppSpecificDataSource implements IStorage {
     private File saveFile;
     private Scanner scan;
     private final String fileName;
@@ -20,7 +18,6 @@ public class AppSpecificDataSource {
         fileName = "file1.txt";
     }
 
-    // #1 App-specific storage (create, save and load)
     public void createFile(Context context){
         saveFile = new File(context.getFilesDir(), fileName);
         Log.i(fileName, context.getFilesDir().toString());

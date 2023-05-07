@@ -20,11 +20,11 @@ import com.example.firstpractice.ui.ViewModel.LuckyPerfumeViewModel;
 
 public class IAmLuckyFragment extends Fragment {
 
-    LuckyPerfumeViewModel model;
+    LuckyPerfumeViewModel model;        // ViewModel
 
-    private Button bttnLuckyPerfume;
-    private ImageView imagePerfume;
-    private TextView textPerfume;
+    private Button bttnLuckyPerfume;    // Button "I am lucky!"
+    private ImageView imagePerfume;     // Image of Lucky Perfume
+    private TextView textPerfume;       // Text of Lucky Perfume
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,19 +47,20 @@ public class IAmLuckyFragment extends Fragment {
         imagePerfume = view.findViewById(R.id.imageViewLuckyPerfume);
         textPerfume = view.findViewById(R.id.text_rolled_perfume);
 
-        // Connecting to ViewModel
+        // Connecting to ViewModel and subscribe for updates of luckyPerfume
         model = new ViewModelProvider(this).get(LuckyPerfumeViewModel.class);
         model.luckyPerfume.observe(getViewLifecycleOwner(), luckyPerfume -> {
+            // Change Image&Text of Lucky Perfume
             imagePerfume.setImageResource(model.getPerfume().getImagePerfume());
             textPerfume.setText(model.getPerfume().getNamePerfume());
         });
 
-        // Adding listener to button
+        // Adding listener to button "I am lucky!"
         bttnLuckyPerfume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 model.rollLuckyPerfume();
-                Log.i("IAmLucky", "ROLLED!");
+                Log.i("IAmLucky", "Rolled perfume: "+ model.getPerfume().getNamePerfume());
             }
         });
     }

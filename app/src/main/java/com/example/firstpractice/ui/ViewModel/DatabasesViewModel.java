@@ -9,7 +9,7 @@ import androidx.lifecycle.ViewModel;
 import com.example.firstpractice.data.repositories.DatabasesRepository;
 
 public class DatabasesViewModel extends ViewModel {
-    private final DatabasesRepository repository;
+    private final DatabasesRepository repository;   // Repository
 
     public DatabasesViewModel(){
         repository = new DatabasesRepository();

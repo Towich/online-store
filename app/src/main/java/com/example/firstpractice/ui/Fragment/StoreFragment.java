@@ -24,22 +24,24 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class StoreFragment extends Fragment{
 
-    private CommonPerfumeViewModel mCommonPerfumeViewModel;
+    private CommonPerfumeViewModel mCommonPerfumeViewModel; // ViewModel
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getParentFragmentManager().setFragmentResultListener(NewPerfumeFragment.REPLY_PERFUME,
-                this, new FragmentResultListener() {
-            @Override
-            public void onFragmentResult(@NonNull String key, @NonNull Bundle bundle) {
-                String namePerfume = bundle.getString(NewPerfumeFragment.REPLY_NAME);
-                int pricePerfume = bundle.getInt(NewPerfumeFragment.REPLY_PRICE);
 
-                CommonPerfumeEntity word = new CommonPerfumeEntity(namePerfume, pricePerfume);
-                mCommonPerfumeViewModel.insert(word);
-            }
-        });
+        // Get result from NewPerfumeFragment
+        getParentFragmentManager().setFragmentResultListener(NewPerfumeFragment.REPLY_PERFUME,
+                this, (key, bundle) -> {
+
+                    // Get name & price of new Perfume from NewPerfumeFragment
+                    String namePerfume = bundle.getString(NewPerfumeFragment.REPLY_NAME);
+                    int pricePerfume = bundle.getInt(NewPerfumeFragment.REPLY_PRICE);
+
+                    // Create new Entity and insert in Database
+                    CommonPerfumeEntity perfumeEntity = new CommonPerfumeEntity(namePerfume, pricePerfume);
+                    mCommonPerfumeViewModel.insert(perfumeEntity);
+                });
     }
 
     @Override
@@ -53,6 +55,7 @@ public class StoreFragment extends Fragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // RecyclerView
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view_store);
         final MyCustomRecyclerViewAdapter adapter = new MyCustomRecyclerViewAdapter(new MyCustomRecyclerViewAdapter.WordDiff());
         recyclerView.setAdapter(adapter);
@@ -60,18 +63,16 @@ public class StoreFragment extends Fragment{
 
         // FloatingActionButton
         FloatingActionButton fab = view.findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_storeFragment_to_newPerfumeFragment);
-            }
+        fab.setOnClickListener(view1 -> {
+            // Navigate to NewPerfumeFragment
+            Navigation.findNavController(view1).navigate(R.id.action_storeFragment_to_newPerfumeFragment);
         });
 
+        // Initialize ViewModel
         mCommonPerfumeViewModel = new ViewModelProvider(this).get(CommonPerfumeViewModel.class);
 
-        mCommonPerfumeViewModel.getAllCommonPerfumes().observe(getActivity(), words -> {
-            // Update the cached copy of the words in the adapter.
-            adapter.submitList(words);
-        });
+        // Subscribe for updates of table "common_perfume_table" in Database
+        // Update the cached copy of the words in the adapter.
+        mCommonPerfumeViewModel.getAllCommonPerfumes().observe(getActivity(), adapter::submitList);
     }
 }

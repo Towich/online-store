@@ -21,26 +21,18 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Log.i("Fragment", "onCreateContentFragment");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
-        Log.i("Fragment", "onCreateView");
         // Inflate the layout for this fragment
-
-
-
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Log.i("Fragment", "onViewCreated");
-        //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // LET THERE BE A LIGHT!
 
         // *Buttons*
 
@@ -89,11 +81,4 @@ public class MainFragment extends Fragment {
             }
         });
     }
-
-
-    @Override
-    public void onStop() {
-        super.onStop();
-    }
-
 }

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ShopDataSource {
+
+    // Create a LiveData list of Shops
     public static LiveData<List<ShopModel>> createShopsList(){
         MutableLiveData<List<ShopModel>> list = new MutableLiveData<>();
 

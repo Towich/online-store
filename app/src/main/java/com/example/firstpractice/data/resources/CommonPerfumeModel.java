@@ -3,8 +3,8 @@ package com.example.firstpractice.data.resources;
 import androidx.annotation.NonNull;
 
 public class CommonPerfumeModel {
-    private String name;
-    private int price;
+    private String name;    // perfume's name
+    private int price;      // perfume's price
 
     public CommonPerfumeModel(String name, int price) {
         this.name = name;

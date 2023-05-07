@@ -8,17 +8,20 @@ import com.example.firstpractice.data.resources.CommonPerfumeModel;
 
 @Entity(tableName = "common_perfume_table")
 public class CommonPerfumeEntity {
+
+    // Table columns
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private int id;         // perfume's id (hidden)
+    private String name;    // perfume's name
+    private int price;      // perfume's price
 
-    private String name;
-    private int price;
-
+    // Constructor
     public CommonPerfumeEntity(String name, int price) {
         this.name = name;
         this.price = price;
     }
 
+    // Getters/setters
     @NonNull
     public String getName(){
         return name;
@@ -41,6 +44,7 @@ public class CommonPerfumeEntity {
         this.id = id;
     }
 
+    // Convert Entity to Model
     public CommonPerfumeModel toModel(){
         return new CommonPerfumeModel(name, price);
     }
