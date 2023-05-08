@@ -12,11 +12,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.example.firstpractice.R;
 
 
 public class MainFragment extends Fragment {
+
+    int currentValue = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -34,51 +38,34 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // *Buttons*
+        ProgressBar indicatorBar = view.findViewById(R.id.indicator);
+        TextView statusView = view.findViewById(R.id.statusView);
+        Button btnFetch = view.findViewById(R.id.progressBtn);
 
-        // button "Store"
-        Button btn_store = view.findViewById(R.id.button_store);
-        btn_store.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_storeFragment2);
-            }
-        });
+        btnFetch.setOnClickListener(view1 -> {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    for(; currentValue <= 100; currentValue++){
+                        try{
+                            statusView.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    indicatorBar.setProgress(currentValue);
+                                }
+                            });
 
-        // button "I am lucky!"
-        Button btn_i_am_lucky = view.findViewById(R.id.button_i_am_lucky);
-        btn_i_am_lucky.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_IAmLuckyFragment);
-            }
-        });
+                            Thread.sleep(400);
+                        }
+                        catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            };
 
-        // button "Check our shops"
-        Button btn_our_shops = view.findViewById(R.id.button_our_shops);
-        btn_our_shops.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_shopsFragment);
-            }
-        });
-
-        // button "Databases"
-        Button btn_databases = view.findViewById(R.id.button_databases);
-        btn_databases.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_databaseFragment);
-            }
-        });
-
-        // button "Contacts"
-        Button btn_contacts = view.findViewById(R.id.button_store_contacts);
-        btn_contacts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_contactsFragment);
-            }
+            Thread thread = new Thread(runnable);
+            thread.start();
         });
     }
 }

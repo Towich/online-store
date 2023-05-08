@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_fragment"
@@ -9,84 +8,38 @@
     tools:context=".ui.Activity.MainActivity">
 
 
-    <ImageView
-        android:id="@+id/user_image_view"
+    <Button
+        android:id="@+id/progressBtn"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_marginTop="4dp"
-        android:contentDescription="@string/image_desc"
-        android:src="@drawable/logo_image"
+        android:layout_height="100dp"
+        android:text="Launch"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <TextView
+        android:id="@+id/statusView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Статус"
+        android:textSize="50sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/button_store"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:text="@string/store"
-        android:textSize="13sp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button_store_contacts"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:text="Contacts"
-        android:textSize="8sp"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/button_i_am_lucky"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="7dp"
-        android:text="@string/i_am_lucky"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button_store_contacts"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toEndOf="@+id/button_our_shops" />
-
-    <Button
-        android:id="@+id/button_our_shops"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="7dp"
-        android:text="@string/check_our_shops"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button_store" />
-
-    <Button
-        android:id="@+id/button_databases"
-        android:layout_width="130dp"
-        android:layout_height="70dp"
-        android:text="@string/databases"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_i_am_lucky"
+    <ProgressBar
+        android:id="@+id/indicator"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/user_name_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="97dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/shop_name"
-        android:textAlignment="center"
-        android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/button_databases"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/user_image_view"
-        app:layout_constraintVertical_bias="0.446" />
+        app:layout_constraintTop_toBottomOf="@+id/statusView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
