@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_mainFragment_to_contactsFragment"
             app:destination="@id/contactsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_parseStockFragment"
+            app:destination="@id/parseStockFragment" />
     </fragment>
 
     <fragment
@@ -65,4 +68,9 @@
         android:name="com.example.firstpractice.ui.Fragment.ContactsFragment"
         android:label="fragment_contacts"
         tools:layout="@layout/fragment_contacts" />
+    <fragment
+        android:id="@+id/parseStockFragment"
+        android:name="com.example.firstpractice.ui.Fragment.ParseStockFragment"
+        android:label="fragment_parse_stock"
+        tools:layout="@layout/fragment_parse_stock" />
 </navigation>

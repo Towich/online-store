@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/store_item_price"
-        android:layout_width="92dp"
+        android:layout_width="110dp"
         style="@style/word_title"
         android:layout_height="100dp"
         android:fontFamily="casual"

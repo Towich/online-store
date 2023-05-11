@@ -30,4 +30,9 @@
         android:id="@+id/contactsFragment"
         android:icon="@drawable/baseline_contacts_24"
         android:title="Contacts" />
+
+    <item
+        android:id="@+id/parseStockFragment"
+        android:icon="@drawable/baseline_find_in_page_24"
+        android:title="Stocks"/>
 </menu>
