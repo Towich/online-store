@@ -64,4 +64,7 @@ dependencies {
 
     // JSoup
     implementation 'org.jsoup:jsoup:1.13.1'
+
+    // WorkManager
+    implementation "android.arch.work:work-runtime:1.0.1"
 }
