@@ -1,5 +1,6 @@
 package com.example.firstpractice.ui.Fragment;
 
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -7,16 +8,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.firstpractice.R;
 
 
 public class MainFragment extends Fragment {
+
+    ImageButton user_image_view;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,17 @@ public class MainFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // *Buttons*
+
+        user_image_view = view.findViewById(R.id.user_image_view);
+
+        StartAnimLogo();
+        user_image_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StartAnimLogo();
+            }
+        });
+
 
         // button "Store"
         Button btn_store = view.findViewById(R.id.button_store);
@@ -81,4 +95,13 @@ public class MainFragment extends Fragment {
             }
         });
     }
+
+    private void StartAnimLogo(){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+            AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) user_image_view.getDrawable();
+            drawable.start();
+        }
+    }
+
+
 }

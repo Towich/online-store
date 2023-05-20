@@ -9,13 +9,15 @@
     tools:context=".ui.Activity.MainActivity">
 
 
-    <ImageView
+    <ImageButton
         android:id="@+id/user_image_view"
         android:layout_width="match_parent"
+        android:background="@color/white"
+        android:scaleType="centerCrop"
         android:layout_height="300dp"
         android:layout_marginTop="4dp"
         android:contentDescription="@string/image_desc"
-        android:src="@drawable/logo_image"
+        android:src="@drawable/avd_anim"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"

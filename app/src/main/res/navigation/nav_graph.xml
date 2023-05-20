@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_main" >
         <action
             android:id="@+id/action_mainFragment_to_storeFragment2"
-            app:destination="@id/storeFragment" />
+            app:destination="@id/storeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_mainFragment_to_IAmLuckyFragment"
             app:destination="@id/IAmLuckyFragment"
@@ -22,13 +26,25 @@
             app:popExitAnim="@anim/slide_out_right" />
         <action
             android:id="@+id/action_mainFragment_to_shopsFragment"
-            app:destination="@id/shopsFragment" />
+            app:destination="@id/shopsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_mainFragment_to_databaseFragment"
-            app:destination="@id/databaseFragment" />
+            app:destination="@id/databaseFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
         <action
             android:id="@+id/action_mainFragment_to_contactsFragment"
-            app:destination="@id/contactsFragment" />
+            app:destination="@id/contactsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -38,7 +54,11 @@
         tools:layout="@layout/fragment_store" >
         <action
             android:id="@+id/action_storeFragment_to_newPerfumeFragment"
-            app:destination="@id/newPerfumeFragment" />
+            app:destination="@id/newPerfumeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 
     <fragment
@@ -62,7 +82,11 @@
         android:label="NewPerfumeFragment" >
         <action
             android:id="@+id/action_newPerfumeFragment_to_storeFragment"
-            app:destination="@id/storeFragment" />
+            app:destination="@id/storeFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/contactsFragment"
@@ -74,4 +98,26 @@
         android:name="com.example.firstpractice.ui.Fragment.ParseStockFragment"
         android:label="fragment_parse_stock"
         tools:layout="@layout/fragment_parse_stock" />
+    <fragment
+        android:id="@+id/cardUpFragment"
+        android:name="com.example.firstpractice.ui.Fragment.CardUpFragment"
+        android:label="fragment_card_up"
+        tools:layout="@layout/fragment_card_up" >
+        <action
+            android:id="@+id/action_cardUpFragment_to_cardDownFragment"
+            app:destination="@id/cardDownFragment"
+            app:enterAnim="@anim/card_flip_left_in"
+            app:exitAnim="@anim/card_flip_left_out" />
+    </fragment>
+    <fragment
+        android:id="@+id/cardDownFragment"
+        android:name="com.example.firstpractice.ui.Fragment.CardDownFragment"
+        android:label="fragment_card_down"
+        tools:layout="@layout/fragment_card_down" >
+        <action
+            android:id="@+id/action_cardDownFragment_to_cardUpFragment"
+            app:destination="@id/cardUpFragment"
+            app:enterAnim="@anim/card_flip_right_in"
+            app:exitAnim="@anim/card_flip_right_out" />
+    </fragment>
 </navigation>

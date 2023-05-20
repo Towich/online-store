@@ -35,4 +35,9 @@
         android:id="@+id/parseStockFragment"
         android:icon="@drawable/baseline_find_in_page_24"
         android:title="Stocks"/>
+
+    <item
+        android:id="@+id/cardUpFragment"
+        android:icon="@drawable/baseline_credit_card_24"
+        android:title="Card"/>
 </menu>
