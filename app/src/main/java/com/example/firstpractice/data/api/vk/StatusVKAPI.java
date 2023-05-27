@@ -8,11 +8,15 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface StatusVKAPI {
-    @GET("status.get?access_token=vk1.a.TZIrTZzSMNj0oeM40IProUH0gnb5B-v6VNkLnWRJhWL7HdxzerH47wJV99zlfcQPJbt6InXXmSMqr7fYb9KFpAHbLHyjwmIr-tn3f4Xq9_VQn0CrCI97xQPrlOi17REIVQorYBZCmlIP9eZawEKz3iBdHhVwmU5REv84p06hq9kscYWVDDuXOJQhvdLp8rVdf8-LL9gDLQ-PB-395CqMDA&v=5.131")
+    @GET("status.get?access_token=vk1.a.C-_WshzaTXaiJrcCiiuPCdx5Wlbh7La5udsQNyk5Sf8KsbeGFiibPksGq-7ktToA1q5Tok1BQdHfTEpr6JzR_srJIuLzl5-rgWgHSIkLxWdAo6_3d_99qRPaJTy8ZX12WFNORmksE-E3_Na-rJS24VNja156RUR95e5hl1jmdp9goXM-08invIMyblRYecoNWYOgQq9M4YHYQTNzWUXoAg&v=5.131")
     Call<PlaceholderVK> getStatus();
 
     @FormUrlEncoded
-    @POST("status.set?access_token=vk1.a.TZIrTZzSMNj0oeM40IProUH0gnb5B-v6VNkLnWRJhWL7HdxzerH47wJV99zlfcQPJbt6InXXmSMqr7fYb9KFpAHbLHyjwmIr-tn3f4Xq9_VQn0CrCI97xQPrlOi17REIVQorYBZCmlIP9eZawEKz3iBdHhVwmU5REv84p06hq9kscYWVDDuXOJQhvdLp8rVdf8-LL9gDLQ-PB-395CqMDA&v=5.131")
+    @POST("status.set?access_token=vk1.a.C-_WshzaTXaiJrcCiiuPCdx5Wlbh7La5udsQNyk5Sf8KsbeGFiibPksGq-7ktToA1q5Tok1BQdHfTEpr6JzR_srJIuLzl5-rgWgHSIkLxWdAo6_3d_99qRPaJTy8ZX12WFNORmksE-E3_Na-rJS24VNja156RUR95e5hl1jmdp9goXM-08invIMyblRYecoNWYOgQq9M4YHYQTNzWUXoAg&v=5.131")
     Call<PlaceholderVK> setStatus(@Field("text") String text);
+
+    @FormUrlEncoded
+    @POST("wall.addlike?access_token=vk1.a.C-_WshzaTXaiJrcCiiuPCdx5Wlbh7La5udsQNyk5Sf8KsbeGFiibPksGq-7ktToA1q5Tok1BQdHfTEpr6JzR_srJIuLzl5-rgWgHSIkLxWdAo6_3d_99qRPaJTy8ZX12WFNORmksE-E3_Na-rJS24VNja156RUR95e5hl1jmdp9goXM-08invIMyblRYecoNWYOgQq9M4YHYQTNzWUXoAg&v=5.131")
+    Call<ResponseWall> addLike(@Field("post_id") int post_id);
 
 }
