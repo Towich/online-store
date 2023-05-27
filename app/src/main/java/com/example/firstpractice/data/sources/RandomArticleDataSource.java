@@ -1,13 +1,10 @@
 package com.example.firstpractice.data.sources;
 
 import android.util.Log;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.firstpractice.R;
-import com.example.firstpractice.data.api.RetrofitFactory;
+import com.example.firstpractice.data.api.acticles.RetrofitFactory;
 import com.example.firstpractice.data.api.acticles.PlaceholderAPI;
 import com.example.firstpractice.data.api.acticles.PlaceholderPost;
 
@@ -41,6 +38,10 @@ public class RandomArticleDataSource {
 
                     List<PlaceholderPost> posts = response.body(); // list of all Models
 
+                    if(posts == null){
+                        return;
+                    }
+
                     Random random = new Random();
                     PlaceholderPost randomPost = posts.get(random.nextInt(100)); // random one Model
 
@@ -53,7 +54,6 @@ public class RandomArticleDataSource {
 
                 } else {
                     Log.d("Ей", "Вау!");
-                    return;
                 }
             }
             @Override

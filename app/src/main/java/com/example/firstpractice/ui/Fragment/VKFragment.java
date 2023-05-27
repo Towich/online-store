@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,17 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.firstpractice.R;
-import com.example.firstpractice.data.api.RetrofitFactory;
-import com.example.firstpractice.data.api.RetrofitFactoryVK;
-import com.example.firstpractice.data.api.vk.PlaceholderVK;
-import com.example.firstpractice.data.api.vk.ResponseVK;
-import com.example.firstpractice.data.api.vk.StatusVKAPI;
 import com.example.firstpractice.ui.ViewModel.VKViewModel;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 
 public class VKFragment extends Fragment {

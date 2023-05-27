@@ -1,12 +1,12 @@
-package com.example.firstpractice.data.api;
+package com.example.firstpractice.data.api.acticles;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class RetrofitFactoryVK {
+public class RetrofitFactory {
     private static Retrofit retrofit = null;
 
-    private RetrofitFactoryVK() {} // class should not be initialized
+    private RetrofitFactory () {} // class should not be initialized
 
     public static Retrofit getRetrofit(String baseUrl) {
         if(retrofit == null) {

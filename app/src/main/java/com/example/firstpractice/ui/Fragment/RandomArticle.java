@@ -8,25 +8,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.firstpractice.R;
-import com.example.firstpractice.data.api.acticles.PlaceholderAPI;
-import com.example.firstpractice.data.api.acticles.PlaceholderPost;
-import com.example.firstpractice.data.api.RetrofitFactory;
 import com.example.firstpractice.ui.ViewModel.RandomArticleViewModel;
-
-import java.util.List;
-import java.util.Random;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
 
 public class RandomArticle extends Fragment {
 
