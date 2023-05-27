@@ -7,6 +7,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,8 +35,9 @@ public class VKFragment extends Fragment {
 
     VKViewModel mVKViewModel;
 
-    Button button_change_status_vk;
     TextView text_view_current_status_vk;
+    EditText edit_text_status_vk;
+    Button button_change_status_vk;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -47,38 +50,50 @@ public class VKFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        EditText edit_text_status_vk = view.findViewById(R.id.edit_text_status_vk);
+        edit_text_status_vk = view.findViewById(R.id.edit_text_status_vk);
         text_view_current_status_vk = view.findViewById(R.id.text_view_current_status_vk);
 
         mVKViewModel = new ViewModelProvider(this).get(VKViewModel.class);
 
+        // Run @getStatus
         mVKViewModel.getStatusVK();
 
+        // Result of @setStatus
         mVKViewModel.getResultStatus().observe(getViewLifecycleOwner(), resultStatus -> {
-            if(resultStatus){
-                button_change_status_vk.setText("SUCCESSFUL!");
-                button_change_status_vk.setTextColor(getResources().getColor(R.color.green));
-            }
-            else{
-                button_change_status_vk.setText("ERROR!");
-                button_change_status_vk.setTextColor(getResources().getColor(R.color.red));
-            }
+
+            button_change_status_vk.setText(resultStatus ? "SUCCESSFUL!" : "ERROR!");
+            button_change_status_vk.setTextColor(getResources().getColor(resultStatus ? R.color.green : R.color.red));
+
             mVKViewModel.getStatusVK();
         });
 
+        // Result of @getStatus
         mVKViewModel.getStatusHolder().observe(getViewLifecycleOwner(), statusHolder -> {
-            if(statusHolder != null)
-                text_view_current_status_vk.setText("Текущий статус:\n" + statusHolder.getResponseVK().getText());
-            else
-                text_view_current_status_vk.setText("ERROR!");
+            text_view_current_status_vk.setText(statusHolder != null ?
+                    "Текущий статус:\n" + mVKViewModel.getStringStatusVK() : "ERROR!");
+
         });
 
+        // Button "ИЗМЕНИТЬ СТАТУС"
         button_change_status_vk = view.findViewById(R.id.button_change_status_vk);
-        button_change_status_vk.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        button_change_status_vk.setOnClickListener(view1 ->
+                mVKViewModel.setStatusVK(edit_text_status_vk.getText().toString()));
 
-                mVKViewModel.setStatusVK(edit_text_status_vk.getText().toString());
+        edit_text_status_vk.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                button_change_status_vk.setText("ИЗМЕНИТЬ СТАТУС");
+                button_change_status_vk.setTextColor(getResources().getColor(R.color.white));
             }
         });
     }

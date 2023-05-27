@@ -45,6 +45,9 @@ public class VKViewModel extends AndroidViewModel {
     public MutableLiveData<PlaceholderVK> getStatusHolder() {
         return statusHolder;
     }
+    public String getStringStatusVK(){
+        return statusHolder.getValue().getResponseVK().getText();
+    }
 
     public void setStatusVK(String newStatus){
         mVKRepository.setStatusVK(newStatus);
@@ -53,6 +56,8 @@ public class VKViewModel extends AndroidViewModel {
     public void getStatusVK(){
         mVKRepository.getStatusVK();
     }
+
+
 
 
 }
