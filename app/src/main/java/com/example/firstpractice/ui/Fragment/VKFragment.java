@@ -82,12 +82,4 @@ public class VKFragment extends Fragment {
             }
         });
     }
-
-    private void getStatus(){
-        //PlaceholderVK placeholderVK = mVKViewModel.getStatusVK();
-//
-    }
-
-
-
 }

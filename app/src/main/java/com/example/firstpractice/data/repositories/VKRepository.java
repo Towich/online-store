@@ -12,11 +12,24 @@ public class VKRepository {
     private MutableLiveData<Boolean> resultStatus;
     private MutableLiveData<PlaceholderVK> statusHolder;
 
+    public VKRepository(){
+        resultStatus = VKDataSource.getResultStatusLiveData();
+        statusHolder = VKDataSource.getPlaceholderVKMutableLiveData();
+    }
+
     public MutableLiveData<Boolean> getResultStatus() {
-        return VKDataSource.getResultStatus();
+        return resultStatus;
     }
 
     public MutableLiveData<PlaceholderVK> getPlaceholderVK() {
-        return VKDataSource.getPlaceholderVK();
+        return statusHolder;
+    }
+
+    public void setStatusVK(String newStatus){
+        VKDataSource.setStatusVK(newStatus);
+    }
+
+    public void getStatusVK(){
+        VKDataSource.getStatusVK();
     }
 }

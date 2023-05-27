@@ -30,8 +30,7 @@ import retrofit2.Retrofit;
 
 public class RandomArticle extends Fragment {
 
-    public final String URL_API =
-            "https://jsonplaceholder.typicode.com/";
+
     private RandomArticleViewModel mViewModel;
 
 
@@ -48,47 +47,20 @@ public class RandomArticle extends Fragment {
 
         mViewModel = new ViewModelProvider(this).get(RandomArticleViewModel.class);
 
-        getDataFromApi(view);
-    }
-
-    private void getDataFromApi(View view) {
         TextView text_view_user_id = view.findViewById(R.id.text_view_user_id);
         TextView text_view_article_id = view.findViewById(R.id.text_view_article_id);
         TextView text_view_title = view.findViewById(R.id.text_view_title);
         TextView text_view_body = view.findViewById(R.id.text_view_body);
 
-        Retrofit retrofit = RetrofitFactory.getRetrofit(URL_API);
-        PlaceholderAPI placeholderAPI = retrofit.create(PlaceholderAPI.class);
-        Call<List<PlaceholderPost>> call = placeholderAPI.getPosts();
-        call.enqueue(new Callback<List<PlaceholderPost>>() {
-            @Override
-            public void onResponse(Call<List<PlaceholderPost>> call, Response<List<PlaceholderPost>> response) {
-                if (response.isSuccessful()) {
-
-                    List<PlaceholderPost> posts = response.body(); // list of all Models
-
-                    Random random = new Random();
-                    PlaceholderPost randomPost = posts.get(random.nextInt(100)); // random one Model
-
-                    Log.d("Success", Integer.toString(randomPost.getUserId()));
-                    Log.d("Success", Integer.toString(randomPost.getId()));
-                    Log.d("Success", randomPost.getTitle());
-                    Log.d("Success", randomPost.getBody());
-
-                    text_view_user_id.setText("ID user: " + Integer.toString(randomPost.getUserId()));
-                    text_view_article_id.setText("ID article: " + Integer.toString(randomPost.getId()));
-                    text_view_title.setText("TITLE: " + randomPost.getTitle());
-                    text_view_body.setText(randomPost.getBody());
-
-                } else {
-                    Log.d("Ей", "Вау!");
-                    return;
-                }
-            }
-            @Override
-            public void onFailure(Call<List<PlaceholderPost>> call, Throwable t) {
-                Log.d("Ей", "Ошибка!!");
-            }
+        mViewModel.getPlaceholderPost().observe(getViewLifecycleOwner(), observer -> {
+            text_view_user_id.setText("ID user: " + observer.getUserId());
+            text_view_article_id.setText("ID article: " + observer.getId());
+            text_view_title.setText("TITLE: " + observer.getTitle());
+            text_view_body.setText(observer.getBody());
         });
+
+        mViewModel.getPost();
     }
+
+
 }

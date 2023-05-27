@@ -47,50 +47,12 @@ public class VKViewModel extends AndroidViewModel {
     }
 
     public void setStatusVK(String newStatus){
-        Retrofit retrofit = RetrofitFactory.getRetrofit(URL_API);
-        StatusVKAPI statusVKAPI = retrofit.create(StatusVKAPI.class);
-        Call<PlaceholderVK> call = statusVKAPI.setStatus(newStatus);
-
-        call.enqueue(new Callback<PlaceholderVK>() {
-            @Override
-            public void onResponse(Call<PlaceholderVK> call, Response<PlaceholderVK> response) {
-                if(!response.isSuccessful()) {
-                    Log.e("ERROR", response.toString());
-                    resultStatus.setValue(true);
-                    return;
-                }
-                resultStatus.setValue(true);
-            }
-
-            @Override
-            public void onFailure(Call<PlaceholderVK> call, Throwable t) {
-                resultStatus.setValue(true);
-            }
-        });
+        mVKRepository.setStatusVK(newStatus);
     }
+
     public void getStatusVK(){
-        Retrofit retrofit = RetrofitFactoryVK.getRetrofit(URL_API);
-        StatusVKAPI statusVKAPI = retrofit.create(StatusVKAPI.class);
-        Call<PlaceholderVK> call = statusVKAPI.getStatus();
-
-        call.enqueue(new Callback<PlaceholderVK>() {
-            @Override
-            public void onResponse(Call<PlaceholderVK> call, Response<PlaceholderVK> response) {
-                if (response.isSuccessful()) {
-                    Log.d("Success", response.body().getResponseVK().getText());
-                    statusHolder.setValue(response.body());
-
-                } else {
-                    Log.d("Ей", "Вау!");
-                    statusHolder.setValue(null);
-                    return;
-                }
-            }
-            @Override
-            public void onFailure(Call<PlaceholderVK> call, Throwable t) {
-                Log.d("Ей", "Ошибка!!" + t.toString());
-                statusHolder.setValue(null);
-            }
-        });
+        mVKRepository.getStatusVK();
     }
+
+
 }
