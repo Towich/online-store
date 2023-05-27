@@ -40,4 +40,14 @@
         android:id="@+id/cardUpFragment"
         android:icon="@drawable/baseline_credit_card_24"
         android:title="Card"/>
+
+    <item
+        android:id="@+id/randomArticle"
+        android:icon="@drawable/baseline_article_24"
+        android:title="Random Article"/>
+
+    <item
+        android:id="@+id/VKFragment"
+        android:icon="@drawable/vk_logo"
+        android:title="VK API"/>
 </menu>

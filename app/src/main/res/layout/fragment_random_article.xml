@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.Fragment.RandomArticle">
+
+    <TextView
+        android:id="@+id/text_view_user_id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="id user: 0"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_view_article_id"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="id article: 1"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_user_id" />
+
+    <TextView
+        android:id="@+id/text_view_title"
+        android:layout_width="match_parent"
+        android:layout_height="146dp"
+        android:layout_marginTop="44dp"
+        android:text="title: "
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_article_id" />
+
+    <TextView
+        android:id="@+id/text_view_body"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:text="body: "
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_title"
+        tools:layout_editor_absoluteX="42dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

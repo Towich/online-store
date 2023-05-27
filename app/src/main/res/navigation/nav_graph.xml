@@ -45,6 +45,12 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_mainFragment_to_randomArticle"
+            app:destination="@id/randomArticle" />
+        <action
+            android:id="@+id/action_mainFragment_to_VKFragment"
+            app:destination="@id/VKFragment" />
     </fragment>
 
     <fragment
@@ -120,4 +126,14 @@
             app:enterAnim="@anim/card_flip_right_in"
             app:exitAnim="@anim/card_flip_right_out" />
     </fragment>
+    <fragment
+        android:id="@+id/randomArticle"
+        android:name="com.example.firstpractice.ui.Fragment.RandomArticle"
+        android:label="fragment_random_article"
+        tools:layout="@layout/fragment_random_article" />
+    <fragment
+        android:id="@+id/VKFragment"
+        android:name="com.example.firstpractice.ui.Fragment.VKFragment"
+        android:label="fragment_v_k"
+        tools:layout="@layout/fragment_v_k" />
 </navigation>
